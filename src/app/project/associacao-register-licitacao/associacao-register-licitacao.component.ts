@@ -1001,7 +1001,7 @@ export class AssociacaoRegisterLicitacaoComponent {
 
     for(let i=0;i<this.lotItemsList.length;i++){
       if(this.lotItemsList[i].id === idLotItem){
-        this.item.push({"name": this.lotItemsList[i].name, "quantity": this.formAddLots.controls['quantity'].value, "unit": this.lotItemsList[i].unit, "group": this.lotItemsList[i].group});
+        this.item.push({"name": this.lotItemsList[i].name, "quantity": this.formAddLots.controls['quantity'].value, "unit": this.lotItemsList[i].unit, "group": this.lotItemsList[i].group});        
         selectedItem = this.item[this.item.length-1]
         break;    
       }

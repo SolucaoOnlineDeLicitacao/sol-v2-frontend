@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sol-app-frontend",            
+            "outputPath": "dist",            
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -116,14 +116,6 @@
                 }
               ],
             },
-            "rn": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.rn.ts"
-                }
-              ],
-            },
             "development": {
               "vendorChunk": true,
               "extractLicenses": false,
@@ -159,9 +151,6 @@
             },
             "bahia": {
                "browserTarget": "sol-app-frontend:build:bahia"
-            },
-            "rn": {
-               "browserTarget": "sol-app-frontend:build:rn"
             }
           },
           "defaultConfiguration": "development"

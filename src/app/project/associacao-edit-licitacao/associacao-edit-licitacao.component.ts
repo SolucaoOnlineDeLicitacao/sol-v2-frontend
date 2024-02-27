@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,6 @@ import { UserService } from 'src/services/user.service';
 import { ItemsService } from "src/services/items.service";
 import { WorkPlanDto } from "src/dtos/convenio/convenio-response.dto";
 import { SHA256, enc } from "crypto-js";
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-associacao-edit-licitacao',
@@ -25,8 +24,6 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./associacao-edit-licitacao.component.scss']
 })
 export class AssociacaoEditLicitacaoComponent {
-
-  @ViewChild('miInputFile') miInputFile: ElementRef;
 
   form!: FormGroup;
   formAddLots!: FormGroup;
@@ -61,10 +58,6 @@ export class AssociacaoEditLicitacaoComponent {
   lotNumber: number
   workPlanId: any[] = []; 
   insuranceId: string;
-  
-  checkBidType: string = "";
-  fileName: string = "-"
-  itemFile: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -75,8 +68,7 @@ export class AssociacaoEditLicitacaoComponent {
     private route: ActivatedRoute,
     private costItemsService: CostItemsService,
     private supplierService: SupplierService,
-    private itemsService: ItemsService,
-    private translate: TranslateService,
+    private itemsService: ItemsService
   ) {
     this.form = this.formBuilder.group({
       description: ['', [Validators.required]],
@@ -88,7 +80,6 @@ export class AssociacaoEditLicitacaoComponent {
       executionDays: ['', [Validators.required, Validators.min(1), Validators.max(720)]],
       deliveryPlace: ['', [Validators.required]],
       biddingType: ['', [Validators.required]],
-      biddingTypeLang: ['', [Validators.required]],
       modality: ['', [Validators.required]],
       adicionalSite: ['']
     });
@@ -155,7 +146,7 @@ export class AssociacaoEditLicitacaoComponent {
           this.invitedSupplierId = data.invited_suppliers.map((objeto: any) => objeto._id);          
 
           const bidData: any = data;
-          this.lots = bidData.add_allotment;                        
+          this.lots = bidData.add_allotment;
 
           this.form.patchValue({
             description: bidData.description,
@@ -168,15 +159,13 @@ export class AssociacaoEditLicitacaoComponent {
             executionDays: bidData.days_to_delivery,
             timebreakerDays: bidData.days_to_tiebreaker,
             deliveryPlace: bidData.local_to_delivery,
-            biddingType: bidData.bid_type,                  
+            biddingType: bidData.bid_type,
             modality: bidData.modality,
             adicionalSite: bidData.aditional_site,
             add_allotment: this.lots,
             invited_suppliers: this.invitedSupplierId,
           });
-
-          this.checkBidType = bidData.bid_type
-                 
+          
           this.insuranceId = bidData.agreement._id;
           const insurance = bidData.agreement._id;
           this.convenioService.getConvenioById(insurance).subscribe({
@@ -273,8 +262,7 @@ export class AssociacaoEditLicitacaoComponent {
                 this.lotItemsList.push({              
                   "name": this.costItemsListFilter[t].name,
                   "quantity": item.quantity,
-                  "unit": item.unit,
-                  "group": this.costItemsListFilter[t].group.segment
+                  "unit": item.unit
                 })            
               }
             }
@@ -326,39 +314,30 @@ export class AssociacaoEditLicitacaoComponent {
   onSubmit() {
 
     this.isSubmit = true;
-    
-    if(!this.lots.length){
+    if (this.form.status == 'INVALID') {
 
-      let errorMessage = 'Não há itens';
+      let errorMessage = 'Preencha todos os campos obrigatórios';
 
       switch (this.storedLanguage) {
         case 'pt':
-          errorMessage = 'Não há itens'
+          errorMessage = 'Preencha todos os campos obrigatórios'
           break;
         case 'en':
-          errorMessage = 'There are no items'
+          errorMessage = 'Fill in all required fields'
           break;
         case 'fr':
-          errorMessage = "Il n'y a aucun article"
+          errorMessage = "Remplissez tous les champs obligatoires"
           break;
         case 'es':
-          errorMessage = 'No hay items'
+          errorMessage = 'Rellene todos los campos obligatorios'
           break;
       }
 
       this.toastrService.error(errorMessage);
       return;
     }
-    
 
     let newBid: AssociationBidRequestDto;
-
-    let newAllotment;
-    if(this.checkBidType == "individualPrice"){
-      for(let i=0;i<this.lots.length;i++){         
-        this.lots[i].allotment_name = this.form.controls['description'].value
-      }        
-    }   
 
     if (!this.lots || this.lots.length === 0) {
       newBid = {
@@ -416,7 +395,7 @@ export class AssociacaoEditLicitacaoComponent {
         }
 
         this.toastrService.success(successMessage, '', { progressBar: true, });
-       // this.router.navigate(['/pages/dashboard']);
+        this.router.navigate(['/pages/dashboard']);
       },
       error: (error) => {
         let errorMessage = 'Não foi possível editar a Licitação, verifique os campos';
@@ -521,44 +500,25 @@ export class AssociacaoEditLicitacaoComponent {
 
       for(let i=0;i<this.lotItemsList.length;i++){
         if(this.lotItemsList[i].id === idLotItem){
-          this.item.push({"name": this.lotItemsList[i].name, "quantity": this.formAddLots.controls['quantity'].value, "unit": this.lotItemsList[i].unit, "group": this.lotItemsList[i].group});
+          this.item.push({"name": this.lotItemsList[i].name, "quantity": this.formAddLots.controls['quantity'].value, "unit": this.lotItemsList[i].unit});        
           selectedItem = this.item[this.item.length-1]
           break;    
         }
       }    
 
+      const newItem: any = {
+        group: 'grupo',
+        name: selectedItem.name || "",
+        quantity: selectedItem.quantity,
+        unit: selectedItem.unit,
+        specification: selectedItem.specification
+      };
+      
       this.formAddLots.controls['quantity'].setValue(0)
 
-      if(this.checkBidType == "individualPrice"){
-
-        const newItem: any = {
-          group: selectedItem.group,
-          name: selectedItem.name || "",
-          quantity: selectedItem.quantity,
-          unit: selectedItem.unit,
-          specification: selectedItem.specification
-        };
-
-        let allotment_name;
-        if(this.checkBidType == "individualPrice"){
-          allotment_name = this.form.controls['description'].value;
-        }
-
-        const newAllotment: AllotmentRequestDto = {
-          allotment_name: allotment_name,
-          days_to_delivery: this.formAddLots.controls['deliveryTimeDays'].value,
-          place_to_delivery: this.formAddLots.controls['deliveryPlaceLots'].value,
-          quantity: this.formAddLots.controls['quantity'].value,
-          files: this.supplierImg,
-          add_item: [newItem]
-        };
-
-        this.lots.push({ ...newAllotment });      
-        this.formAddLots.controls['quantity'].setValue(0)
-
-      }        
-
     }
+    
+    
 
   }
 
@@ -674,35 +634,17 @@ export class AssociacaoEditLicitacaoComponent {
     this.disableEditLot = !this.disableEditLot
     this.lotToEdit = this.lots[index]
 
+
+
+
   }
 
   removeLot(index: number) {
-    if(this.checkBidType == "individualPrice"){
-      this.item.splice(index,1)
-    }    
-    this.lots.splice(index,1)
-    if(!this.lots.length && this.miInputFile) {
-      this.fileName = "-"
-      this.itemFile = null;
-      this.miInputFile.nativeElement.value = '';
-    }
+    this.lots.splice(index, 1);
   }
 
   removeItem(index: number) {
-    this.item.splice(index,1)
-    this.lots.splice(index,1)      
-        
-    // tipo de licitación = 'individualPrice', Si no hay items no hay lotes
-    if(this.item.length === 0) {
-      this.formAddLots.controls["batchName"].enable()
-      this.formAddLots.controls["deliveryTimeDays"].enable()
-      this.formAddLots.controls["deliveryPlaceLots"].enable()      
-      if(this.miInputFile) {
-        this.fileName = "-"
-        this.itemFile = null;
-        this.miInputFile.nativeElement.value = '';
-      }
-    }
+    this.item.splice(index, 1);
   }
 
   setItemValue(idLotItem: string) {

@@ -88,7 +88,7 @@ export class ProjectsComponent implements OnInit {
     return equal;
   }
   getProjects() {
-    this.userId = JSON.parse(localStorage.getItem("user"));
+    this.userId = JSON.parse(localStorage.getItem("user")); 
     if(this.authService.getAuthenticatedUser().type === 'associacao') {
       this.projectsService.findAllProjectsForAssociationId(this.userId.id).subscribe({
         next: data => {          

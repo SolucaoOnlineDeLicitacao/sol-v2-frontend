@@ -101,7 +101,6 @@ export class ClassesComponent  implements OnInit{
   }
 
   delete(i: any, Id: string) {   
-    localStorage.setItem('editclass', JSON.stringify(i));
     localStorage.setItem('class_id', Id);
     const modal = this.modalService.open(DeleteClassComponent, { centered: true, backdrop: true, size: 'md',keyboard: false })        
     modal.result.then((result) => {

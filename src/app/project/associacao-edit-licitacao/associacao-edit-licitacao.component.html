@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-md-12">
       <h1>{{"CREATE_BIDDING.EDIT_BIDDING" | translate}}</h1>
-      <hr class="bg-primary">
+      <hr class="bg-secondary">
     </div>
   </div>
 
@@ -58,7 +58,7 @@
               <label for="classification"
                 class="font-archivo font-size-16 font-weight-medium text-secondary m-0"><b>{{"CREATE_BIDDING.CLASSIFICATION"
                   | translate}}</b><span class="f-size-16
-									text-danger"></span></label>
+									text-danger">*</span></label>
 
 							<input formControlName="classification" readonly style="text-indent:20px;" class="form-control">
               
@@ -162,9 +162,7 @@
                 id="deliveryPlace" placeholder="{{'BUTTON_TEXT.TYPE' | translate}}">
             </div>
 
-            <!-- Tipo de licitación -->
             <div class="col-sm-12 col-md-8 mt-3">
-            	<!--
               <label for="biddingType"
                 class="font-archivo font-size-16 font-weight-medium text-secondary m-0"><b>{{"CREATE_BIDDING.BIDDING_TYPE"
                   |
@@ -182,24 +180,8 @@
                 <img src="../../../assets/images/icon-alert.svg" class="img-msg-error" alt>
                 <p class="font-poppins font-size-14 m-0">{{"CREATE_BIDDING.BIDDING_TYPE" | translate}}</p>
               </div>
-            	-->
-
-            	<label for="biddingType"
-                class="font-archivo font-size-16 font-weight-medium text-secondary m-0"><b>{{"CREATE_BIDDING.BIDDING_TYPE"
-                  |
-                  translate}}</b><span class="f-size-16
-									text-danger"></span>
-							</label>
-
-							<div [ngSwitch]="checkBidType">
-					      <input *ngSwitchCase="'individualPrice'" readonly value='{{"CREATE_BIDDING.INDIVIDUAL_PRICE" | translate}}' style="text-indent:20px;" class="form-control">	
-					      <input *ngSwitchCase="'allotmentPrice'" readonly value='{{"CREATE_BIDDING.LOT_PRICE" | translate}}' style="text-indent:20px;" class="form-control">	
-					      <input *ngSwitchCase="'globalPrice'" readonly value='{{"CREATE_BIDDING.GLOBAL_PRICE" | translate}}' style="text-indent:20px;" class="form-control">					     
-					    </div>
-
             </div>
 
-            <!-- Modality -->
             <div class="col-sm-12 col-md-4 mt-3">
               <label for="modality"
                 class="font-archivo font-size-16 font-weight-medium text-secondary m-0"><b>{{"CREATE_BIDDING.MODALITY" |
@@ -229,7 +211,7 @@
           </div>
         </form>
 
-        	<!---  form edit --->
+        	<!--- >  form edit <--->
 				<form *ngIf="disableEditLot" class="mr-5" [formGroup]="formAddLots">
 
 					<div class="row">
@@ -446,6 +428,7 @@
 							</div>
 						</div>
 					</div>
+
 				</form>
 				<!-- fim do form edit-->
 
@@ -461,15 +444,6 @@
           </div>
 
           <div class="row">
-
-          	 <div class="col-sm-12 col-md-4 mt-3">
-              <label for="batchName"
-                class="font-archivo font-size-16 font-weight-medium text-secondary m-0"><b>{{"CREATE_BIDDING.LOT_NAME" |
-                  translate}}</b></label>
-              <input type="text" formControlName="batchName" style="text-indent:20px;" class="form-control"
-                id="batchName" placeholder="{{'BUTTON_TEXT.TYPE' | translate}}">
-            </div>
-
 
           	<!--
             <div class="col-sm-12 col-md-4 mt-3">
@@ -508,7 +482,7 @@
             </div>
 
             <!-- items -->
-            <div class="col-sm-12 col-md-6 mt-3">
+            <div class="col-sm-12 col-md-7 mt-3">
               <select type="text" formControlName="item" style="text-indent:20px;" class="form-control" id="item" #itemId (change)="setItemValue(itemId.value)">                
                 <option selected readonly disabled [value]="''">{{"BUTTON_TEXT.SELECT" | 
                 translate}}</option>              
@@ -519,7 +493,7 @@
             </div>
 
             <!-- Quantity -->
-            <div class="col-sm-12 col-md-6" style="margin-top: -7px;">
+            <div class="col-sm-12 col-md-2" style="margin-top: -7px;">
               <label for="quantity"
                 class="font-archivo font-size-16 font-weight-medium text-secondary m-0"><b>{{"CREATE_BIDDING.QUANTITY" |
                   translate}}</b></label>
@@ -530,8 +504,8 @@
             </div>
 
             <!-- Button Add Quantity-->
-            <div class="col-md-4 mt-4 float-right ml-auto">
-              <button [disabled]="!isFormValid() || 
+            <div class="d-flex align-self-end w100 col-md-3">
+              <button [disabled]="!isFormValid() || daysToDeliveryValidator || 
               	formAddLots.controls['quantity'].value === 0 || formAddLots.controls['quantity'].value === '' || formAddLots.controls['quantity'].value === null || formAddLots.controls['quantity'].value === undefined"
                (click)="addItem();"
                 class="w-100 py-2 br-10 align-self-end com btn btn-dark">
@@ -593,15 +567,10 @@
               </div>
             </div>
 
-            <!-- button: Crear Lote -->
-            
-            <ng-container *ngIf="checkBidType=='allotmentPrice' || checkBidType=='globalPrice'">
-	            <div class="col-md-4 mt-4 float-right ml-auto">
-	              <button [disabled]="!isLotFormValid()" type="button" class="bg-light btn-lg btn-block mb-4 text-small"
-	                (click)="addLot()">{{"CREATE_BIDDING.CREATE_LOT" | translate}}</button>
-	            </div>
-	          </ng-container>
-          	
+            <div class="col-md-4 mt-4 float-right ml-auto">
+              <button [disabled]="!isLotFormValid()" type="button" class="bg-light btn-lg btn-block mb-4 text-small"
+                (click)="addLot()">{{"CREATE_BIDDING.CREATE_LOT" | translate}}</button>
+            </div>
 
             <div *ngIf="lots.length > 0" class="col-12 mt-3">
               <h4>{{"CREATE_BIDDING.LOTS_CREATED" | translate}}</h4>
@@ -619,7 +588,7 @@
                           <th scope="col"></th>
                         </tr>
                       </thead>
-                       <tbody>
+                      <!-- <tbody>
                         <tr *ngFor="let lot of lots; let i= index;">
                           <th class="text-capitalize" scope="row">{{lot.allotment_name}}</th>
                           <td class="text-capitalize">{{lot.add_item.length}}</td>
@@ -632,8 +601,7 @@
                           </td>
                         </tr>
 
-                      </tbody>
-                      <!--
+                      </tbody> -->
                       <tbody>
                         <ng-container *ngFor="let lot of lots; let i = index;">
                           <tr>
@@ -646,13 +614,11 @@
                               </button>
                             </td>
 
-                            
                             <td class="table_icon">
                               <button class="btn btn-lg" (click)="editLot(i)">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                               </button>
                             </td>
-                          	
                           </tr>
 
                           <tr *ngFor="let item of lot.add_item">
@@ -662,7 +628,6 @@
                           </tr>
                         </ng-container>
                       </tbody>
-                    	-->
 
                     </table>
                   </div>
@@ -671,7 +636,6 @@
             </div>
 
             <!-- Suppliers -->
-            <!--
             <div class="col-12 mt-3">
               <h4>{{"CREATE_BIDDING.INVITE_SUPPLIERS" | translate}}</h4>
             </div>
@@ -711,9 +675,8 @@
                 </div>
               </div>
             </div>
-          	-->
-
           </div>
+
         </form>
 
         <div class="mt-5">
