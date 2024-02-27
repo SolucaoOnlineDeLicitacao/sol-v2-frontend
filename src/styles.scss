@@ -142,27 +142,23 @@ input:focus {
 .h50 {
   height: 50px;
 }
-
+.bg-sidebar-dark {
+  background-color: #0e344f;
+}
 .bg-sidebar {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    linear-gradient(172.85deg, #5EA7DE -11.2%, #215B85 51.82%);
+  background-color: #17486c;
+  // background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    // linear-gradient(172.85deg, #5EA7DE -11.2%, #215B85 51.82%);
 }
 
 .bg-navbar {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-  linear-gradient(270deg, #5EA7DE -11.2%, #215B85 51.82%);
+  background-color: #0e344f;
+  // background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+  // linear-gradient(270deg, #5EA7DE -11.2%, #215B85 51.82%);
 }
 
 .color-dark {
   color: var(--color-fourth);
-}
-
-.br-tabele {
-  border-radius: 10px 0px 0px 0px;
-}
-
-.br-tabele2 {
-  border-radius: 0px 10px 0px 0px;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -497,13 +493,6 @@ button[disabled] {
   cursor: pointer;
 }
 
-.br-tabele {
-  border-radius: 10px 0px 0px 0px;
-}
-
-.br-tabele2 {
-  border-radius: 0px 10px 0px 0px;
-}
 
 .h50 {
   height: 50px;
@@ -738,9 +727,9 @@ button[disabled] {
   align-items: center;
   padding: 15px;
 
-  background: linear-gradient(303deg, #5EA7DE, #215B85);
+  background: linear-gradient(303deg, #143f5e, #3271a2);
   background-size: 180% 180%;
-  animation: gradient-animation 9s ease infinite;
+  animation: gradient-animation 4s ease infinite;
 
   @keyframes gradient-animation {
     0% {
