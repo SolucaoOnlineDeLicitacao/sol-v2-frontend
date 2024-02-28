@@ -309,7 +309,7 @@
 								<div class="col-md-8 d-flex justify-content-end">
 									<button (click)="next('step1')"
 										[disabled]="formModel.controls['biddingType'].value === '' || formModel.controls['modality'].value === '' || formModel.controls['description'].value === '' || formModel.controls['insurance'].value === '' || formModel.controls['classification'].value === ''"
-										class="btn btn-dark btn-lg btn-block mt-4"
+										class="btn btn-primary btn-lg btn-block mt-4"
 										style="max-width: 300px;">{{'BUTTON_TEXT.NEXT' | translate}}</button>
 								</div>
 							</div>
@@ -451,7 +451,7 @@
 								<div class="col-md-8 d-flex justify-content-end">
 									<button (click)="next('step2')"
 										[disabled]="formModel.controls['biddingType'].value === '' || formModel.controls['insurance'].value === '' || formModel.controls['classification'].value === '' || formDate.invalid"
-										class="btn btn-dark btn-lg btn-block mt-4"
+										class="btn btn-primary btn-lg btn-block mt-4"
 										style="max-width: 300px;">{{'BUTTON_TEXT.NEXT' | translate}}</button>
 								</div>
 							</div>
@@ -606,7 +606,7 @@
 											*ngIf="checkBidType ===  'individualPrice'">
 											<button type="button"
 												[disabled]=" formAddLots.controls['quantity'].value === 0 || formAddLots.controls['quantity'].value === '' || formAddLots.controls['quantity'].value === null || formAddLots.controls['quantity'].value === undefined"
-												class="bg-light btn-lg btn-block mb-4 text-small"
+												class="btn btn-light btn-lg btn-block mb-4 text-small"
 												(click)="addItem()">{{'CREATE_BIDDING.ADD_ITEM' | translate}}</button>
 										</div>
 
@@ -615,7 +615,7 @@
 											<button
 												[disabled]="!isFormValid() || daysToDeliveryValidator || formAddLots.controls['quantity'].value === 0 || formAddLots.controls['quantity'].value === '' || formAddLots.controls['quantity'].value === null || formAddLots.controls['quantity'].value === undefined"
 												(click)="addItem();"
-												class="bg-light btn-lg btn-block mb-4 text-small">
+												class="btn btn-light btn-lg btn-block mb-4 text-small">
 												+ {{"BUTTON_TEXT.ADD" | translate}}
 											</button>
 										</div>
@@ -643,7 +643,7 @@
 										<div class="col-md-4 mt-4 float-right ml-auto"
 											*ngIf="checkBidType !==  'individualPrice'">
 											<button [disabled]="item.length == 0" type="button"
-												class="bg-light btn-lg btn-block mb-4 text-small"
+												class="btn btn-light btn-lg btn-block mb-4 text-small"
 												(click)="addLot()">{{"CREATE_BIDDING.CREATE_LOT"
 												| translate}}</button>
 										</div>										
@@ -797,7 +797,7 @@
 											<button
 												[disabled]="!isFormValid() || daysToDeliveryValidator || formAddLots.controls['quantity'].value === 0 || formAddLots.controls['quantity'].value === '' || formAddLots.controls['quantity'].value === null || formAddLots.controls['quantity'].value === undefined"
 												(click)="addItem();"
-												class="w-100 py-2 br-10 align-self-end com btn btn-dark">
+												class="w-100 py-2 br-10 align-self-end com btn btn-primary">
 												+ {{"BUTTON_TEXT.ADD" | translate}}
 											</button>
 										</div>
@@ -806,7 +806,7 @@
 											*ngIf="checkBidType !==  'individualPrice' && editItemControl">
 											<button [disabled]="!isFormValid() || daysToDeliveryValidator"
 												(click)="editItemSelected();"
-												class="w-100 py-2 br-10 align-self-end com btn btn-dark">
+												class="w-100 py-2 br-10 align-self-end com btn btn-primary">
 												+ {{"BUTTON_TEXT.EDIT" | translate}}
 											</button>
 										</div>
@@ -890,7 +890,7 @@
 										<div class="col-md-4 mt-4 float-right ml-auto"
 											*ngIf="checkBidType !==  'individualPrice'">
 											<button [disabled]="formAddLots.invalid" type="button"
-												class="bg-light btn-lg btn-block mb-4 text-small"
+												class="btn btn-light btn-lg btn-block mb-4 text-small"
 												(click)="saveEdit()">Salvar edição</button>
 										</div>
 
@@ -898,7 +898,7 @@
 											*ngIf="checkBidType ===  'individualPrice'">
 											<button type="button"
 												[disabled]="itemSelected || formAddLots.controls['quantity'].value === 0 || formAddLots.controls['quantity'].value === '' || formAddLots.controls['quantity'].value === null || formAddLots.controls['quantity'].value === undefined"
-												class="bg-light btn-lg btn-block mb-4 text-small"
+												class="btn btn-light btn-lg btn-block mb-4 text-small"
 												(click)="addItem()">{{'CREATE_BIDDING.ADD_ITEM' | translate}}</button>
 										</div>
 
@@ -982,7 +982,7 @@
 							</div>							
 
 							<div class="col-md-8 d-flex justify-content-end">
-								<button [disabled]="lots.length == 0" (click)="next('step3')" class="btn btn-dark btn-lg btn-block mt-4" style="max-width: 300px;">{{'BUTTON_TEXT.NEXT' | translate}}</button>
+								<button [disabled]="lots.length == 0" (click)="next('step3')" class="btn btn-primary btn-lg btn-block mt-4" style="max-width: 300px;">{{'BUTTON_TEXT.NEXT' | translate}}</button>
 							</div>
 						</div>
 					</div>
@@ -1006,7 +1006,7 @@
 
 										<div *ngIf="formModel.controls['modality'].value !== 'openClosed'"
 											class="d-flex align-self-end w100 col-md-3">
-											<button class="w-100 py-2 br-10 align-self-end com btn btn-dark"
+											<button class="w-100 py-2 br-10 align-self-end com btn btn-primary"
 												(click)="addSupplier()">
 												+ {{"BUTTON_TEXT.ADD" | translate}}
 											</button>
@@ -1034,7 +1034,7 @@
 									<p>{{'STEP_BID_REGISTER.EX_SELECT' | translate}}</p>
 								</div>
 								<div class="col-md-8 d-flex justify-content-end">
-									<button (click)="next('step4')" class="btn btn-dark btn-lg btn-block mt-4"
+									<button (click)="next('step4')" class="btn btn-primary btn-lg btn-block mt-4"
 										style="max-width: 300px;">{{'BUTTON_TEXT.NEXT' | translate}}</button>
 								</div>
 							</div>

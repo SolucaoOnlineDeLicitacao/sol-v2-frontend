@@ -13,7 +13,7 @@
           placeholder="{{'CLASSES.SEARCH' | translate}}" formControlName="search">
       </div>
       <div class="col-md-3" *ngIf="authService.getAuthenticatedUser().type == 'administrador'">
-        <button type="button" class="btn btn-dark btn-lg btn-block" [routerLink]="['/pages/classes/registrar-class']">
+        <button type="button" class="btn btn-primary btn-lg btn-block" [routerLink]="['/pages/classes/registrar-class']">
           {{"CLASSES.NEW_CLASS" | translate}}
         </button>
       </div>

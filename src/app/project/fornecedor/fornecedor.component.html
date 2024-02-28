@@ -12,7 +12,7 @@
           placeholder="{{'SUPPLIER.SEARCH_NAME' | translate}}">
       </div>
       <div class="col-md-3" *ngIf="authService.getAuthenticatedUser().roles !== 'visualizador_projetos'">
-        <button type="button" class="btn btn-dark btn-lg btn-block"
+        <button type="button" class="btn btn-primary btn-lg btn-block"
           [routerLink]="['/pages/fornecedor/registrar-fornecedor']">{{'SUPPLIER.NEW_SUPPLIER' | translate}}</button>
       </div>
 

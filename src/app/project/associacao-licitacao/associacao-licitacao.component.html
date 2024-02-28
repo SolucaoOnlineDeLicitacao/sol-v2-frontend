@@ -29,7 +29,7 @@
         </select>
       </div>
       <div class="col-md-3 mt-2 mt-md-0">
-        <button type="button" class="btn btn-dark btn-lg btn-block"
+        <button type="button" class="btn btn-primary btn-lg btn-block"
           [routerLink]="['/pages/licitacoes/licitacao-register']">{{"ASSOCIATION_BIDDING.NEW_BIDDING" | translate}}</button>
       </div>
 
@@ -71,7 +71,7 @@
         </div>
         <div class="col-12 col-md-2">
           <button (click)="editBids(item);" *ngIf="item.status ==='draft' || item.status ==='returned'" type="button"
-            class="bg-light btn-lg btn-block mb-4 text-small text-dark">{{"BUTTON_TEXT.EDIT" | translate}}</button>
+            class="btn btn-light btn-lg btn-block mb-4 text-small text-dark">{{"BUTTON_TEXT.EDIT" | translate}}</button>
         </div>
       </div>
     </div>

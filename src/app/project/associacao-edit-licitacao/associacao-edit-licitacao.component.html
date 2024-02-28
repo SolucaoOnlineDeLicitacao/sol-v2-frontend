@@ -286,7 +286,7 @@
 						<div class="d-flex align-self-end w100 col-md-3">
 							<button [disabled]="form.controls['biddingType'].value === 'individualPrice' &&
 							lotToEdit.add_item.length > 0" (click)="addAllotmentItem(item);"
-								class="w-100 py-2 br-10 align-self-end com btn btn-dark">
+								class="w-100 py-2 br-10 align-self-end com btn btn-primary">
 								+ {{"BUTTON_TEXT.ADD" | translate}}
 							</button>
 						</div>
@@ -347,7 +347,7 @@
 
 						<div class="col-md-4 mt-4 float-right ml-auto">
 							<button  type="button"
-								class="bg-light btn-lg btn-block mb-4 text-small"
+								class="btn btn-light btn-lg btn-block mb-4 text-small"
 								(click)="saveChanges()">Salvar Alterações</button>
 						</div>
 
@@ -410,7 +410,7 @@
 
 						<div *ngIf="form.controls['modality'].value !== 'openClosed'"
 							class="d-flex align-self-end w100 col-md-3">
-							<button class="w-100 py-2 br-10 align-self-end com btn btn-dark" (click)="addSupplier()">
+							<button class="w-100 py-2 br-10 align-self-end com btn btn-primary" (click)="addSupplier()">
 								+ {{"BUTTON_TEXT.ADD" | translate}}
 							</button>
 						</div>
@@ -508,7 +508,7 @@
               <button [disabled]="!isFormValid() || daysToDeliveryValidator || 
               	formAddLots.controls['quantity'].value === 0 || formAddLots.controls['quantity'].value === '' || formAddLots.controls['quantity'].value === null || formAddLots.controls['quantity'].value === undefined"
                (click)="addItem();"
-                class="w-100 py-2 br-10 align-self-end com btn btn-dark">
+                class="w-100 py-2 br-10 align-self-end com btn btn-primary">
                 + {{"BUTTON_TEXT.ADD" | translate}}
               </button>
             </div>
@@ -568,7 +568,7 @@
             </div>
 
             <div class="col-md-4 mt-4 float-right ml-auto">
-              <button [disabled]="!isLotFormValid()" type="button" class="bg-light btn-lg btn-block mb-4 text-small"
+              <button [disabled]="!isLotFormValid()" type="button" class="btn btn-light btn-lg btn-block mb-4 text-small"
                 (click)="addLot()">{{"CREATE_BIDDING.CREATE_LOT" | translate}}</button>
             </div>
 
@@ -658,7 +658,7 @@
             </div>
 
             <div class="d-flex align-self-end w100 col-md-3">
-              <button class="w-100 py-2 br-10 align-self-end com btn btn-dark" (click)="addSupplier()">
+              <button class="w-100 py-2 br-10 align-self-end com btn btn-primary" (click)="addSupplier()">
                 + {{"BUTTON_TEXT.ADD" | translate}}
               </button>
             </div>
@@ -682,13 +682,13 @@
         <div class="mt-5">
           <div class="row">
             <div class="col-md-6">
-              <a href="/pages/dashboard" type="button" class="bg-light btn-lg btn-block mb-4 text-center">
+              <a href="/pages/dashboard" type="button" class="btn btn-light btn-lg btn-block mb-4 text-center">
                 {{"BUTTON_TEXT.CANCEL" | translate}}
               </a>
             </div>
             <div class="col-md-6">
               <button [disabled]="daysToDeliveryValidator" (click)="onSubmit();" type="submit"
-                class="btn btn-dark btn-lg btn-block mb-4">{{"CREATE_BIDDING.EDIT_BIDDING" |
+                class="btn btn-primary btn-lg btn-block mb-4">{{"CREATE_BIDDING.EDIT_BIDDING" |
                 translate}}</button>
             </div>
           </div>

@@ -46,6 +46,15 @@ export class ProjectManagerComponent {
       }
     },
     {
+      value: 'revisor',
+      name: {
+        'en': 'Reviewer',
+        'pt': 'Revisor',
+        'fr': 'Relecteur',
+        'es': 'Revisor'
+      }
+    },
+    {
       value: 'gerente_geral_projetos',
       name: {
         'en': 'General Project Manager',

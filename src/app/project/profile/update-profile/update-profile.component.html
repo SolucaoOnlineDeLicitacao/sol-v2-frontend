@@ -31,11 +31,11 @@
 
                 <div class="d-flex flex-fill justify-content-end">
                     <div class="col-md-4 mt-4">
-                        <button type="button" class="bg-light btn-lg btn-block mb-4 text-small"
+                        <button type="button" class="btn btn-light btn-lg btn-block mb-4 text-small"
                             [routerLink]="['/pages/profile']">{{"BUTTON_TEXT.CANCEL" | translate}}</button>
                     </div>
                     <div class="col-md-4 mt-4">
-                        <button [disabled]="form.invalid" type="button" class="bg-light btn-lg btn-block mb-4 text-small"
+                        <button [disabled]="form.invalid" type="button" class="btn btn-light btn-lg btn-block mb-4 text-small"
                             (click)="changeInfo()">{{"BUTTON_TEXT.SAVE" | translate}}</button>
                     </div>
                 </div>

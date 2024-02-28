@@ -19,7 +19,7 @@
       
       
       <div class="col-md-3" *ngIf="authService.getAuthenticatedUser().type == 'administrador'">
-        <button type="button" class="btn btn-dark btn-lg btn-block" [routerLink]="['/pages/categorias/registrar-categoria']">
+        <button type="button" class="btn btn-primary btn-lg btn-block" [routerLink]="['/pages/categorias/registrar-categoria']">
           {{"CATEGORIES_SEGMENTS.NEW_CATEGORY" | translate}}
         </button>
       </div>  

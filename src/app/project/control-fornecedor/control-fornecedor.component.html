@@ -12,11 +12,11 @@
           placeholder="{{'BUTTON_TEXT.INPUT_SEARCH_USER_SUPPLIER' | translate}}">
       </div>
       <div class="col-md-3" *ngIf="authService.getAuthenticatedUser().type === 'project_manager' && authService.getAuthenticatedUser().roles !== 'visualizador_projetos'">
-        <button type="button" class="btn btn-dark btn-lg btn-block"
+        <button type="button" class="btn btn-primary btn-lg btn-block"
           [routerLink]="['/pages/controle-fornecedor/registrar-usuario']">{{"BUTTON_TEXT.NEW_USER" | translate}}</button>
       </div>
       <div class="col-md-3" *ngIf="authService.getAuthenticatedUser().type === 'administrador'">
-        <button type="button" class="btn btn-dark btn-lg btn-block"
+        <button type="button" class="btn btn-primary btn-lg btn-block"
           [routerLink]="['/pages/controle-fornecedor/registrar-usuario']">{{"BUTTON_TEXT.NEW_USER" | translate}}</button>
       </div>
 

@@ -318,7 +318,7 @@
                 </select>
             </div>
             <div *ngIf="form.controls['manager'].value !== '' " class="col-md-4 pt-2 mt-4">
-                <button (click)="handleAgreements()" type="submit" class="btn btn-dark btn-lg btn-block">
+                <button (click)="handleAgreements()" type="submit" class="btn btn-primary btn-lg btn-block">
                     {{'REGISTER_SUPPLIER.ADD' | translate}}</button>
             </div>
             <div *ngFor="let item of selectAgreementList; let i = index" class="col-sm-8 col-sm-8 mt-2">
@@ -343,7 +343,7 @@
                 </select>
             </div>
             <div class="col-md-4 pt-2 mt-4">
-                <button (click)="handleAddSupplier($event)" type="submit" class="btn btn-dark btn-lg btn-block">
+                <button (click)="handleAddSupplier($event)" type="submit" class="btn btn-primary btn-lg btn-block">
                     {{'REGISTER_SUPPLIER.ADD' | translate}}</button>
             </div>
             <div *ngFor="let item of userSelectedList; let i = index" class="col-sm-12 col-md-8 mt-2">
@@ -370,7 +370,7 @@
                 </select>
             </div>
             <div class="col-md-4 pt-2 mt-4">
-                <button (click)="handleAddReviewer($event)" type="submit" class="btn btn-dark btn-lg btn-block">
+                <button (click)="handleAddReviewer($event)" type="submit" class="btn btn-primary btn-lg btn-block">
                     {{'REGISTER_SUPPLIER.ADD' | translate}}</button>
             </div>
             <div *ngFor="let item of projectSecondReviewer; let i = index" class="col-sm-12 col-md-8 mt-2">
@@ -397,13 +397,13 @@
     <div class="mt-5">
         <div class="row">
             <div class="col-md-6">
-                <p type="button" class="bg-light btn-lg btn-block mb-4 text-center" (click)="cancel()">
+                <p type="button" class="btn btn-light btn-lg btn-block mb-4 text-center" (click)="cancel()">
                     {{'PROJECT.CANCEL' | translate}}
                 </p>
             </div>
             <div class="col-md-6"> 
                 <button (click)="onSubmit();" type="submit"
-                    class="btn btn-dark btn-lg btn-block mb-4">{{'PROJECT.CREATE_PROJECT' |
+                    class="btn btn-primary btn-lg btn-block mb-4">{{'PROJECT.CREATE_PROJECT' |
                     translate}}</button>
             </div>
 

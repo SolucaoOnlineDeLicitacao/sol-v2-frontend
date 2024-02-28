@@ -152,7 +152,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-11 mt-3" *ngIf="authService.getAuthenticatedUser().roles === 'gerente_geral_projetos' || authService.getAuthenticatedUser().roles === 'revisor_projetos' ">
+        <div class="col-md-11 mt-3" *ngIf="authService.getAuthenticatedUser().roles === 'gerente_geral_projetos' || authService.getAuthenticatedUser().roles === 'revisor_projetos'
+        || authService.getAuthenticatedUser().roles === 'revisor'">
             <div *ngIf="(response.status ==='awaiting')">
                 <div class="row">
                     <div class="col-md-5 mt-2"></div>

@@ -134,7 +134,7 @@
 				placeholder="{{'BUTTON_TEXT.INPUT_SEARCH_LICITACOES_NUMBER' | translate}}">
 			</div>
 			<div class="col-md-3">
-				<button type="button" class="btn btn-dark btn-lg btn-block mt-3 mt-md-0"
+				<button type="button" class="btn btn-primary btn-lg btn-block mt-3 mt-md-0"
 					(click) = "onLicitacaoRegister()">{{"ASSOCIATION_BIDDING.NEW_BIDDING" | translate}}</button>
 			</div>
 
@@ -176,7 +176,7 @@
 				</div>
 				<div class="col-12 col-md-2">
 					<button (click)="editBids(item);" *ngIf="item.status ==='draft' || item.status ==='returned'" type="button"
-						class="bg-light btn-lg btn-block mb-4 text-small text-dark">
+						class="btn btn-light btn-lg btn-block mb-4 text-small text-dark">
 						{{"BUTTON_TEXT.EDIT" | translate}}</button>
 				</div>
 			</div>

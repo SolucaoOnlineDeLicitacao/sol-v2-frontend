@@ -12,7 +12,7 @@
           formControlName="search" placeholder="{{'PRODUCTS.SEARCH_NAME' | translate}}">
       </div>
       <div class="col-md-3" *ngIf="authService.getAuthenticatedUser().type == 'administrador'">
-        <button type="button" class="btn btn-dark btn-lg btn-block"
+        <button type="button" class="btn btn-primary btn-lg btn-block"
           [routerLink]="['/pages/produtos/registrar-produto']">
           {{"PRODUCTS.NEW_PRODUCT" | translate}} 
         </button>

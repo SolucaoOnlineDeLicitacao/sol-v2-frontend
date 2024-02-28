@@ -204,14 +204,14 @@
                 </div>
                 <div class="col-md-6 mt-3">
                   <!-- <button *ngIf="response.status == 'open'"
-                    (click)="viewProposal(item, 'create')" class="btn btn-dark br-10 w-100"
+                    (click)="viewProposal(item, 'create')" class="btn btn-primary br-10 w-100"
                     type="button"><strong>Preencher proposta</strong></button> -->
                   <button *ngIf="response.status == 'open' " (click)="viewProposal(item, 'create')"
-                    class="btn btn-dark br-10 w-100" type="button"><strong>{{"SUPPLIER_BIDDING.FILLOUT_PROPOSAL"
+                    class="btn btn-primary br-10 w-100" type="button"><strong>{{"SUPPLIER_BIDDING.FILLOUT_PROPOSAL"
                       |
                       translate}}</strong></button>
                   <button *ngIf="response.status == 'awaiting' " (click)="viewProposal(item, 'create')"
-                    class="btn btn-dark br-10 w-100" type="button"><strong>{{"SUPPLIER_BIDDING.FILLOUT_PROPOSAL" |
+                    class="btn btn-primary br-10 w-100" type="button"><strong>{{"SUPPLIER_BIDDING.FILLOUT_PROPOSAL" |
                       translate}}</strong></button>
                 </div>
               </div>

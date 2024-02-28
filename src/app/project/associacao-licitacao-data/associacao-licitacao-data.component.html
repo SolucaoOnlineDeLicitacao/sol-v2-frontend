@@ -165,31 +165,31 @@
           <div class="row col-12 col-md-6 p-2">
             <div class="col-12">
               <button *ngIf="response.status === 'returned' " (click)="downloadEdital()" type="button"
-                class="bg-light btn-lg btn-block mb-4 text-small">{{"DOWNLOAD_EDITAL_DRAFT" | translate}}</button>
+                class="btn btn-light btn-lg btn-block mb-4 text-small">{{"DOWNLOAD_EDITAL_DRAFT" | translate}}</button>
               <button *ngIf="response.status !=='draft' && response.status !== 'returned' " (click)="downloadEdital()"
-                type="button" class="bg-light btn-lg btn-block mb-4 text-small">{{"SUPPLIER_BIDDING.DOWNLOAD"
+                type="button" class="btn btn-light btn-lg btn-block mb-4 text-small">{{"SUPPLIER_BIDDING.DOWNLOAD"
                 | translate}}</button>
               <button *ngIf="response.status ==='draft'" (click)="downloadEdital()" type="button"
-                class="bg-light btn-lg btn-block mb-4 text-small">{{"DOWNLOAD_EDITAL_DRAFT"
+                class="btn btn-light btn-lg btn-block mb-4 text-small">{{"DOWNLOAD_EDITAL_DRAFT"
                 | translate}}</button>
             </div>
 
             <div class="col-12">
-              <button *ngIf="response.additionalDocuments.length !== 0" (click)="downloadComplentary()" type="button" class="bg-light btn-lg btn-block mb-4 text-small">
+              <button *ngIf="response.additionalDocuments.length !== 0" (click)="downloadComplentary()" type="button" class="btn btn-light btn-lg btn-block mb-4 text-small">
                 {{"DOWNLOAD_COMPLEMENTARY_ARCHIVES" | translate}}</button>
-                <button *ngIf="response.additionalDocuments.length === 0" disabled type="button" class="bg-light btn-lg btn-block mb-4 text-small">
+                <button *ngIf="response.additionalDocuments.length === 0" disabled type="button" class="btn btn-light btn-lg btn-block mb-4 text-small">
                   {{'ADMINISTRATION_BIDDING_DETAIL.WITHOUT_ADDITIONAL_DOCUMENT'   | translate}}</button>
             </div>
             <div class="col-12">
               <button *ngIf="response.status === 'completed'" (click)="openModal('contract', null)" type="button"
-                class="bg-light btn-lg btn-block mb-4 text-small">
+                class="btn btn-light btn-lg btn-block mb-4 text-small">
                 {{'ADMINISTRATION_BIDDING_DETAIL.CONTRACT_AGREEMENT' |
                 translate}}</button>
             </div>
 
             <div class="col-12">
               <button *ngIf="response.status === 'completed' " (click)="downloadAta()" type="button"
-                class="bg-light btn-lg btn-block mb-4 text-small">
+                class="btn btn-light btn-lg btn-block mb-4 text-small">
                 {{"ADMINISTRATION_BIDDING_DETAIL.DOWNLOAD_ATA" | translate}}</button>
             </div>
           </div>
@@ -381,7 +381,7 @@
 
     <div class="d-flex justify-content-center">
       <div class="col-md-6 mt-4">
-        <button type="button" class="bg-light btn-lg btn-block mb-4 text-small border-0"
+        <button type="button" class="btn btn-light btn-lg btn-block mb-4 text-small border-0"
           (click)="exit();">{{"BUTTON_TEXT.BACK" | translate}}</button>
       </div>
 
@@ -407,7 +407,7 @@
 
     <div class="d-flex justify-content-center">
       <div class="col-md-6 mt-4">
-        <button type="button" class="bg-light btn-lg btn-block mb-4 text-small border-0"
+        <button type="button" class="btn btn-light btn-lg btn-block mb-4 text-small border-0"
           (click)="exit();">{{"BUTTON_TEXT.BACK" | translate}}</button>
       </div>
 
@@ -434,7 +434,7 @@
 
     <div class="d-flex justify-content-center">
       <div class="col-md-6 mt-4">
-        <button type="button" class="bg-light btn-lg btn-block mb-4 text-small border-0"
+        <button type="button" class="btn btn-light btn-lg btn-block mb-4 text-small border-0"
           (click)="exit();">{{"BUTTON_TEXT.BACK" | translate}}</button>
       </div>
 

@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-3 mt-2" *ngIf="authService.getAuthenticatedUser().type !== 'project_manager' && authService.getAuthenticatedUser().type !== 'associacao'">
                 <button [routerLink]="['/pages/criar-projeto']" type="button"
-                    class="btn btn-dark btn-lg btn-block">{{'PROJECT.CREATE_PROJECT' |
+                    class="btn btn-primary btn-lg btn-block">{{'PROJECT.CREATE_PROJECT' |
                     translate}}</button>
             </div>
 

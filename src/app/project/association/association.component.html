@@ -13,7 +13,7 @@
           placeholder="{{'BUTTON_TEXT.INPUT_SEARCH_ENTITY' | translate}}">
       </div>
       <div class="col-md-3" *ngIf="user.roles !== 'geral' && authService.getAuthenticatedUser().roles !== 'visualizador_projetos'">
-        <button type="button" class="btn btn-dark btn-lg btn-block"
+        <button type="button" class="btn btn-primary btn-lg btn-block"
           [routerLink]="['/pages/associacao/registrar-associacao']">{{'ADMINISTATION_ASSOCIATION.NEW_ASSOCIATION' |
           translate}}</button>
       </div>

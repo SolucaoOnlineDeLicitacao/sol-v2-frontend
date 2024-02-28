@@ -13,7 +13,7 @@
       </div>
       <div class="col-md-3" 
         *ngIf="authbase.getAuthenticatedUser().type === 'project_manager' && isManager || authbase.getAuthenticatedUser().roles === 'gerente_geral_projetos'">
-        <button type="button" class="btn btn-dark btn-lg btn-block"
+        <button type="button" class="btn btn-primary btn-lg btn-block"
           [routerLink]="['/pages/convenios/novo-convenio']">{{'AGREEMENTS.NEW_AGREEMENT_BUTTON' | translate}}</button>
       </div>
 
