@@ -13,7 +13,7 @@
 		</div>
 	</div>
 
-  <div class="col-md-12 border mt-3 br-10 py-3 ">
+  <div class="col-md-12 border mt-3 br-10 pt-2">
     <div class="d-flex justify-content-between">
       <div>
         <h6 class="font-poppins f-size-14 text-secondary">{{'ADMINISTRATION_AGREEMENTS_BIDDING.NUMBER_BID' | translate}}</h6>
@@ -39,12 +39,12 @@
   </div>
   <div class="col-12 border mt-3 br-10 py-3" *ngFor="let item of response.add_allotment">
     <div class="px-2 d-flex justify-content-between">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h6 class="font-poppins f-size-14 text-secondary">{{'ADMINISTRATION_AGREEMENTS_BIDDING.NAME_AGREEMENT' | translate}}</h6>
         <h5 class="mb-0 text-dark">{{item.allotment_name}}</h5>
       </div>
 
-      <div class="col-md-2 text-capitalize">
+      <div class="col-md-4 text-capitalize">
         <h6 class="font-poppins f-size-14 text-secondary">Status</h6>
         <h5 *ngIf="response.status ==='awaiting'" class="f-size-16 text-warning">{{'ADMINISTRATION_BIDDING.AWAITING' | translate}}</h5>
         <h5 *ngIf="response.status ==='tiebreaker'" class="f-size-16 text-warning">{{'ADMINISTRATION_BIDDING.TIEBREAKER' | translate}}</h5>
