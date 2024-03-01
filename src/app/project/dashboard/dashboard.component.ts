@@ -34,11 +34,12 @@ export class DashboardComponent implements AfterViewInit {
   associationList!: AssociationResponseDto[];
   fornecedorList!: SupplierRequestDto[];
 
-  selectedFilterOption : string = "listAll";
+  selectedFilterOption: string = "listAll";
   licitacoesListFilter: any = [];
-  search : string = '';
+  search: string = '';
 
   novoArray: any = []
+  mapLimits: [number, number][] = [];
 
   map: L.DrawMap;
 
@@ -74,7 +75,7 @@ export class DashboardComponent implements AfterViewInit {
     private formBuilder: FormBuilder,
     private authbase: AuthService,
     private _modelContractService: ModelContractService,
-    private translate: TranslateService,    
+    private translate: TranslateService,
     private toastrService: ToastrService
   ) {
     this.form = this.formBuilder.group({
@@ -82,13 +83,13 @@ export class DashboardComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {    
+  ngAfterViewInit(): void {
 
     if (this.authService.getAuthenticatedUser().type == 'fornecedor') {
       this.ngxSpinnerService.show();
       this._associationBidService.listForSupplier().subscribe({
         next: (data: any[]) => {
-          this.licitacoesList = data.filter((bid: any) => bid.status === 'returned' ||  bid.status === 'awaiting')
+          this.licitacoesList = data.filter((bid: any) => bid.status === 'returned' || bid.status === 'awaiting')
           this.licitacoesList = data.sort((a: any, b: any) => b.bid_count - a.bid_count)
           this.licitacoesListFilter = this.licitacoesList
           this.licitacoesListFirst10 = this.licitacoesList.slice(0, 10)
@@ -108,7 +109,7 @@ export class DashboardComponent implements AfterViewInit {
       this.map = L.map('map').setView([-23.6820635, -46.924961], 8);
 
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
+        maxZoom: 17,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(this.map);
 
@@ -190,7 +191,7 @@ export class DashboardComponent implements AfterViewInit {
           this.associationList = response;
           this.associationList.map(item => {
 
-            if(item.address.latitude && item.address.longitude){
+            if (item.address.latitude && item.address.longitude) {
               this.addMarker(
                 item.name,
                 `/pages/associacao/dados-associacao/${item._id}`,
@@ -198,9 +199,9 @@ export class DashboardComponent implements AfterViewInit {
                 item.address.longitude,
                 'association',
               );
-            }            
-            
-          })
+            }
+
+          });
         }
       });
 
@@ -208,7 +209,7 @@ export class DashboardComponent implements AfterViewInit {
         next: response => {
           this.fornecedorList = response;
           this.fornecedorList.map(item => {
-            if(item.address.latitude && item.address.longitude){
+            if (item.address.latitude && item.address.longitude) {
               this.addMarker(
                 item.name,
                 `/pages/fornecedor/dados-fornecedor/${item._id}`,
@@ -231,7 +232,7 @@ export class DashboardComponent implements AfterViewInit {
           this.licitacoesList = List.filter((item: any) => item.deleted === false);
           this.licitacoesList.sort((a: any, b: any) => b.bid_count - a.bid_count)
           this.licitacoesListFilter = this.licitacoesList
-          
+
           this.ngxSpinnerService.hide();
         },
         error: (error) => {
@@ -241,24 +242,25 @@ export class DashboardComponent implements AfterViewInit {
       })
 
       this.form.controls['search'].valueChanges.subscribe((text: string) => {
-        if (text.length >= 1){
-  
+        if (text.length >= 1) {
+
           const options: any = {
             keys: ['association.name', 'bid_count']
-           }
-            const fuse = new Fuse(this.licitacoesList, options)
-            const fuseResult = fuse.search(text).map(ele => ele.item)
-  
-            this.licitacoesListFilter = fuseResult
+          }
+          const fuse = new Fuse(this.licitacoesList, options)
+          const fuseResult = fuse.search(text).map(ele => ele.item)
+
+          this.licitacoesListFilter = fuseResult
         }
         else {
           this.licitacoesListFilter = this.licitacoesList
         }
       })
 
-    this.ngxSpinnerService.hide();
+      this.ngxSpinnerService.hide();
 
     }
+
   }
 
   ngOnInit(): void {
@@ -274,8 +276,8 @@ export class DashboardComponent implements AfterViewInit {
       this.associationService.list().subscribe({
         next: response => {
           this.associationList = response;
-          this.associationList.map(item => { 
-            if(item.address.latitude && item.address.longitude){          
+          this.associationList.map(item => {
+            if (item.address.latitude && item.address.longitude) {
               this.addMarker(
                 item.name,
                 `/pages/associacao/dados-associacao/${item._id}`,
@@ -291,8 +293,8 @@ export class DashboardComponent implements AfterViewInit {
       this._supplierService.supplierList().subscribe({
         next: response => {
           this.fornecedorList = response;
-          this.fornecedorList.map(item => {            
-            if(item.address.latitude && item.address.longitude){
+          this.fornecedorList.map(item => {
+            if (item.address.latitude && item.address.longitude) {
               this.addMarker(
                 item.name,
                 `/pages/fornecedor/dados-fornecedor/${item._id}`,
@@ -332,15 +334,15 @@ export class DashboardComponent implements AfterViewInit {
     this.search = event.target.value;
     this.licitacoesListFilter = this.licitacoesList.filter(
       (item: any) => {
-        if(this.selectedFilterOption === 'listAll' || this.selectedFilterOption === 'descending') {
+        if (this.selectedFilterOption === 'listAll' || this.selectedFilterOption === 'descending') {
           return item.bid_count?.toLowerCase().includes(this.search.toLowerCase()) ||
             item.description?.toLowerCase().includes(this.search.toLowerCase()) ||
             item.association?.association?.name.toLowerCase().includes(this.search.toLowerCase())
         }
 
-        if(!this.search.length) return item.status === this.selectedFilterOption
+        if (!this.search.length) return item.status === this.selectedFilterOption
 
-        if(this.search.length && item.status === this.selectedFilterOption) {
+        if (this.search.length && item.status === this.selectedFilterOption) {
           return item.bid_count?.toLowerCase().includes(this.search.toLowerCase()) ||
             item.description?.toLowerCase().includes(this.search.toLowerCase()) ||
             item.association?.association?.name.toLowerCase().includes(this.search.toLowerCase())
@@ -349,13 +351,13 @@ export class DashboardComponent implements AfterViewInit {
     );
   }
 
-  changeSelectedFilter(event : any) {
+  changeSelectedFilter(event: any) {
     this.selectedFilterOption = event.target.value;
 
-    const object = { 
-      target : {
-        value : this.search
-      } 
+    const object = {
+      target: {
+        value: this.search
+      }
     }
     this.filter(object)
   }
@@ -372,21 +374,21 @@ export class DashboardComponent implements AfterViewInit {
       case 'association':
         icon = L.icon({
           iconUrl: '../../../assets/markers/blue.png',
-          iconSize: [36, 59],
-          iconAnchor: [22, 94],
-          popupAnchor: [-3, -76],
+          iconSize: [30, 53],
+          iconAnchor: [15, 53],
+          popupAnchor: [0, -40],
           shadowSize: [68, 95],
-          shadowAnchor: [22, 94]
+          shadowAnchor: [15, 53],
         });
         break;
       default:
         icon = L.icon({
           iconUrl: '../../../assets/markers/green.png',
-          iconSize: [36, 59],
-          iconAnchor: [22, 94],
-          popupAnchor: [-3, -76],
+          iconSize: [30, 53],
+          iconAnchor: [15, 53],
+          popupAnchor: [0, -40],
           shadowSize: [68, 95],
-          shadowAnchor: [22, 94]
+          shadowAnchor: [15, 53],
         })
         break;
     }
@@ -397,25 +399,28 @@ export class DashboardComponent implements AfterViewInit {
       .bindPopup(
         `<a href='${link}'>${name}</a>`)
       .addTo(this.map);
+    this.mapLimits.push([+lat, +lng]);
+    this.map.fitBounds(L.latLngBounds(this.mapLimits));
+    this.map.zoomOut();
   }
 
   getText() {
-    this.dashboardService.getText().subscribe(res =>{
+    this.dashboardService.getText().subscribe(res => {
       console.log(res)
     })
   }
 
   setText() {
-    this.dashboardService.setText().subscribe(res =>{
+    this.dashboardService.setText().subscribe(res => {
       console.log(res)
     })
   }
 
-  onLicitacaoRegister(){
+  onLicitacaoRegister() {
 
     this._modelContractService.list().subscribe({
       next: data => {
-          
+
 
 
         let count_es = 0;
@@ -423,33 +428,33 @@ export class DashboardComponent implements AfterViewInit {
         let count_fr = 0;
         let count_en = 0;
 
-        for(let i=0;i<data.length;i++){
-          if(data[i].language == "spanish"){
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].language == "spanish") {
             count_es++;
           }
-          if(data[i].language == "portuguese"){
+          if (data[i].language == "portuguese") {
             count_pt++;
           }
-          if(data[i].language == "french"){
+          if (data[i].language == "french") {
             count_fr++;
           }
-          if(data[i].language == "english"){
+          if (data[i].language == "english") {
             count_en++;
           }
-        }                
+        }
 
-        if(count_es == 4 && count_pt == 4 && count_fr == 4 && count_en == 4){
-          this.router.navigate(['/pages/licitacoes/licitacao-register']);          
-        }else{
+        if (count_es == 4 && count_pt == 4 && count_fr == 4 && count_en == 4) {
+          this.router.navigate(['/pages/licitacoes/licitacao-register']);
+        } else {
           this.toastrService.success(this.translate.instant('TOASTRS.ERROR_DOCUMENTS_MISSING'), '', { progressBar: true });
-        }        
+        }
 
       },
-      error: err =>{
+      error: err => {
         this.toastrService.success(this.translate.instant('TOASTRS.ERROR_DOCUMENTS_MISSING'), '', { progressBar: true });
       }
     });
-    
+
   }
 
 }
