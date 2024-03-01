@@ -11,11 +11,11 @@
 			<div class="card ">
 				<div class="card-body shadow">
 					<div class="row">
-						<div class="col-md-12 text-right"><h5 class="card-title">{{"DASHBOARD.REGISTERED_ASSOCIATIONS" | translate}}</h5></div>
+						<div class="col-md-12 text-left"><h5 class="card-title">{{"DASHBOARD.REGISTERED_ASSOCIATIONS" | translate}}</h5></div>
 					</div>
 					<div class="row mt-3">
 						<div class="col-md-7 text-left"><img src="../../../../assets/images/associacoesicon.svg"
-								style="max-height: 70px; max-width: 100px;" alt="IMG"></div>
+								style="max-height: 60px; max-width: 100px;" alt="IMG"></div>
 						<div class="col-md-5 text-right"><h1 class="card-title mt-3">{{responseDashboard.associationRegister}}</h1></div>
 					</div>
 				</div>
@@ -25,11 +25,11 @@
 			<div class="card">
 				<div class="card-body shadow">
 					<div class="row">
-						<div class="col-md-12 text-right"><h5 class="card-title">{{"DASHBOARD.REGISTERED_SUPPLIERS" | translate}}</h5></div>
+						<div class="col-md-12 text-left"><h5 class="card-title">{{"DASHBOARD.REGISTERED_SUPPLIERS" | translate}}</h5></div>
 					</div>
 					<div class="row mt-3">
 						<div class="col-md-7 text-left"><img src="../../../../assets/images/fornecedoresicon.svg"
-								style="max-height: 70px; max-width: 78px;" alt="IMG"></div>
+								style="max-height: 60px; max-width: 78px;" alt="IMG"></div>
 						<div class="col-md-5 text-right"><h1 class="card-title mt-3">{{responseDashboard.supplierRegister}}</h1></div>
 					</div>
 				</div>
@@ -39,11 +39,11 @@
 			<div class="card">
 				<div class="card-body shadow">
 					<div class="row">
-						<div class="col-md-12 text-right"><h5 class="card-title">{{"DASHBOARD.ONGOING_BIDDING" | translate}}</h5></div>
+						<div class="col-md-12 text-left"><h5 class="card-title">{{"DASHBOARD.ONGOING_BIDDING" | translate}}</h5></div>
 					</div>
 					<div class="row mt-3">
 						<div class="col-md-7 text-left"><img src="../../../../assets/images/licitacoesicon.svg"
-								style="max-height: 70px; max-width: 100px;" alt="IMG"></div>
+								style="max-height: 60px; max-width: 100px;" alt="IMG"></div>
 						<div class="col-md-5 text-right"><h1 class="card-title mt-3">{{responseDashboard.bidInProgress}}</h1></div>
 					</div>
 				</div>
@@ -52,73 +52,13 @@
 	</div>
 	<div class="row mt-5">
 		<div class="col-md-12">
-			<div id="map" style="height: 500px;">
+			<div id="map" style="height: 60vh">
 			</div>
 		</div>
 	</div>
 	
 	
 </div>
-
-<!-- <div *ngIf="authService.getAuthenticatedUser().type == 'administrador'"
-	class="container-fluid">
-	<div class="row mt-5">
-		<div class="col-md-4">
-			<div class="card ">
-				<div class="card-body shadow">
-					<div class="row">
-						<div class="col-md-12 text-right"><h5 class="card-title">{{"SIDEBAR.AGREEMENTS" | translate}}</h5></div>
-
-					</div>
-					<div class="row mt-3">
-						<div class="col-md-7 text-left"><img src="../../../../assets/images/associacoesicon.svg"
-								style="max-height: 100px; max-width: 100px;" alt="IMG"></div>
-						<div class="col-md-5 text-right"><h1 class="card-title mt-3">{{convenios}}</h1></div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="card">
-				<div class="card-body shadow">
-					<div class="row">
-						<div class="col-md-12 text-right"><h5 class="card-title">{{"DASHBOARD.PENDING_BIDS" | translate}}</h5></div>
-
-					</div>
-					<div class="row mt-3">
-						<div class="col-md-7 text-left"><img src="../../../../assets/images/fornecedoresicon.svg"
-								style="max-height: 78px; max-width: 78px;" alt="IMG"></div>
-						<div class="col-md-5 text-right"><h1 class="card-title mt-3">{{licitacoesPendentesSize}}</h1></div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="card">
-				<div class="card-body shadow">
-					<div class="row">
-						<div class="col-md-12 text-right"><h5 class="card-title">{{"DASHBOARD.BIDS_UNDER_REVIEW" | translate}}</h5></div>
-
-					</div>
-					<div class="row mt-3">
-						<div class="col-md-7 text-left"><img src="../../../../assets/images/licitacoesicon.svg"
-								style="max-height: 100px; max-width: 100px;" alt="IMG"></div>
-						<div class="col-md-5 text-right"><h1 class="card-title mt-3">{{licitacoesEmAnaliseSize}}</h1></div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row mt-5">
-		<div class="col-md-12">
-			<div id="map" style="height: 500px;">
-			</div>
-		</div>
-	</div>
-</div>  -->
 
 <div *ngIf="authService.getAuthenticatedUser().type == 'associacao'">
 	<div class="row mt-5">
