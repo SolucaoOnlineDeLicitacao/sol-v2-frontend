@@ -48,10 +48,10 @@ export class ProjectManagerComponent {
     {
       value: 'revisor',
       name: {
-        'en': 'Reviewer',
-        'pt': 'Revisor',
-        'fr': 'Relecteur',
-        'es': 'Revisor'
+        'en': 'Bid/convention reviewer',
+        'pt': 'Revisor de licitação/convênio',
+        'fr': "Réviseur d'appels d'offres / convention",
+        'es': 'Revisor de licitación/convenio'
       }
     },
     {

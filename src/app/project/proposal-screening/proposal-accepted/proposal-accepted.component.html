@@ -137,7 +137,7 @@
                   </div>
                   <div class="col-md-8">
                     <div class="row d-flex"
-                      *ngIf="authService.getAuthenticatedUser().type === 'project_manager' && (authService.getAuthenticatedUser().roles==='gerente_geral_projetos' || authService.getAuthenticatedUser().roles==='revisor_projetos')">
+                      *ngIf="authService.getAuthenticatedUser().type === 'project_manager' && (authService.getAuthenticatedUser().roles==='gerente_geral_projetos' || authService.getAuthenticatedUser().roles==='revisor_projetos' || authService.getAuthenticatedUser().roles==='revisor')">
                       <div class="col-md-6">
                         <button
                           *ngIf="proposal.proposal.proposalWin === true && !proposal.proposal.reviewer_accept && proposal.proposal.association_accept && user.roles !== 'geral'"

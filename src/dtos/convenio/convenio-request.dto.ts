@@ -10,6 +10,6 @@ export abstract class ConvenioRequestDto {
     associationId: string;
     projectId?: string;
     manager?: string;
-    project?: string
-    
+    project?: string;
+    reviewer?: string;
 }

@@ -14,6 +14,7 @@ import { UserTypeEnum } from "src/enums/user-type.enum";
 import { AgreementStatusEnum } from "src/enums/agreement-status.enum";
 import { distinctUntilChanged, filter } from "rxjs";
 import { ProjectsService } from "src/services/projects.service";
+import { UserRolesEnum } from "src/enums/user-roles.enum";
 
 @Component({
   selector: "app-new-convenio",
@@ -29,6 +30,7 @@ export class NewConvenioComponent {
   request: ConvenioRequestDto;
   associationList: AssociationResponseDto[];
   userList: any[];
+  reviewersList: any[];
   userListProject: UserListResponseDto[];
   agreementStatusEnum = AgreementStatusEnum;
   numberalert = "Número";
@@ -67,6 +69,7 @@ export class NewConvenioComponent {
       situation: ['', [Validators.required]],
       association: ['', [Validators.required]],
       review: ['', [Validators.required]],
+      reviewer: ['', [Validators.required]],
     });
   }
 
@@ -74,6 +77,7 @@ export class NewConvenioComponent {
     this.getAssociation();
     this.getAdm();
     this.getProjectmanager();
+    this.getReviewers();
 
 
     setInterval(() => {
@@ -123,6 +127,16 @@ export class NewConvenioComponent {
       },
     });
   }
+  getReviewers() {
+    this.userService.listByRole(UserRolesEnum.revisor).subscribe({
+      next: data => {
+        this.reviewersList = data;
+      },
+      error: err => {
+        console.error(err);
+      },
+    });
+  }
 
   backConvenio() {
     this.location.back();
@@ -141,6 +155,7 @@ export class NewConvenioComponent {
       status: this.form.controls["situation"].value,
       associationId: this.form.controls["association"].value,
       projectId: this.form.controls["review"].value,
+      reviewer: this.form.controls["reviewer"].value,
     };
     this.convenioService.register(this.request).subscribe({
       next: success => {

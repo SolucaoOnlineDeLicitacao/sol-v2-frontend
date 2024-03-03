@@ -55,7 +55,7 @@ export class RegisterProjectManagerComponent {
     this.roleList = [
       { value: 'visualizador_projetos', name: 'Visualizador de projetos' },
       { value: 'revisor_projetos', name: 'Revisor de projetos' },
-      { value: 'revisor', name: 'Revisor de licitação' },
+      { value: 'revisor', name: 'Revisor de licitação / convênio' },
       { value: 'gerente_geral_projetos', name: 'Gestor de projetos geral' },
     ];
 

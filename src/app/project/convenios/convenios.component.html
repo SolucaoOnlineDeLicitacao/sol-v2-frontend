@@ -39,7 +39,7 @@
                 <th class="text-capitalize" scope="row" (click)="detalheConvenios(item)">{{item.register_number}}</th>
                 <td class="text-capitalize" (click)="detalheConvenios(item)">{{item.register_object}}</td>
                 <td class="text-capitalize" (click)="detalheConvenios(item)">{{item?.association.name}}</td>
-                <!-- <td class="text-capitalize" (click)="detalheConvenios(item)">{{item.reviewer.name}}</td> -->
+                <td class="text-capitalize" (click)="detalheConvenios(item)">{{item?.reviewer?.name ?? 'Sem revisor'}}</td>
                 <td (click)="detalheConvenios(item)"><i class="bi bi-eye-fill"></i></td>
                 <td class="table_icon d-flex justify-content-start align-items-center" *ngIf="user.roles !== 'geral'">
                   <div class="dropdown"
