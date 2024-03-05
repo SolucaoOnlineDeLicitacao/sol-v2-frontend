@@ -100,13 +100,13 @@
                     <h6 class="font-poppins f-size-14 text-secondary">{{'ADMINISTRATION_BIDDING_DETAIL.REASON' | translate}}</h6>
                     <h5 class="f-size-16">--</h5>
                 </div>
-                <div class="col-md-4">
-                    <button (click)="openModal('lote', null)" class="br-10 w-100 h50 btn border btn-light"><strong>{{'ADMINISTRATION_BIDDING_DETAIL.ALLOTMENT_AGREEMENT'
-                            | translate}}</strong></button>
-                </div>
                 <div class="col-md-8 mt-1">
                     <h6 class="font-poppins f-size-14 text-secondary">{{'ADMINISTRATION_BIDDING_DETAIL.DETAIL' | translate}}</h6>
                     <h5 class="f-size-16">{{response.description}}</h5>
+                </div>
+                <div class="col-md-4">
+                    <button (click)="openModal('lote', null)" class="br-10 w-100 h50 btn border btn-light"><strong>{{'ADMINISTRATION_BIDDING_DETAIL.ALLOTMENT_AGREEMENT'
+                            | translate}}</strong></button>
                 </div>
                 <div *ngIf="response.status === 'completed'" class="col-md-4 d-flex align-self-end">
                     <button (click)="openModal('contract', null)"
@@ -152,9 +152,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-11 mt-3" *ngIf="authService.getAuthenticatedUser().roles === 'gerente_geral_projetos' || authService.getAuthenticatedUser().roles === 'revisor_projetos'
-        || authService.getAuthenticatedUser().roles === 'revisor'">
-            <div *ngIf="(response.status ==='awaiting')">
+        <div class="col-md-11 mt-3" *ngIf="
+            authService.getAuthenticatedUser().roles === 'gerente_geral_projetos' || 
+            authService.getAuthenticatedUser().roles === 'revisor_projetos' || 
+            authService.getAuthenticatedUser().roles === 'geral' ||  
+            authService.getAuthenticatedUser().roles === 'administrador' || 
+            authService.getAuthenticatedUser().roles === 'revisor'">
+            <div *ngIf="(response.status ==='awaiting')"><!-- TODO: Temporary solution in roles geral and administrador -->
                 <div class="row">
                     <div class="col-md-5 mt-2"></div>
                     <div class="col-md-1"></div>
