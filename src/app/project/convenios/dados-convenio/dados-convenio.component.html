@@ -40,7 +40,6 @@
 							translate}}</h6>
 						<h5 class="f-size-16">{{convenio.value | currency: 'BRL'}}</h5>
 					</div>
-					<div class="col-12 col-lg-4 p-2"></div>
 					<div class="col-12 col-lg-4 p-2">
 						<h6 class="font-poppins f-size-14 text-secondary">{{'AGREEMENTS.AGREEMENT_DATA.SIGNATURE_DATE' |
 							translate}}</h6>
@@ -51,16 +50,15 @@
 							translate}}</h6>
 						<h5 class="f-size-16">{{convenio.validity_date | date:'dd/MM/yyyy'}}</h5>
 					</div>
-					<div class="col-12 col-lg-4 p-2"></div>
 					<div class="col-12 col-lg-4 p-2 text-capitalize">
 						<h6 class="font-poppins f-size-14 text-secondary">{{'AGREEMENTS.ASSOCIATION' | translate}}</h6>
 						<h5 class="f-size-16">{{convenio.association.name}}</h5>
 					</div>
-					<div class="col-12 col-lg-4 p-2">
-						<!-- <h6 class="font-poppins f-size-14 text-secondary">{{'AGREEMENTS.PROOFREADER' | translate}}</h6> -->
-						<!-- <h5 class="f-size-16">{{convenio.reviewer.name}}</h5> -->
+					<div class="col-12 col-lg-4 p-2" *ngIf="convenio.reviewer">
+						<h6 class="font-poppins f-size-14 text-secondary">{{'AGREEMENTS.PROOFREADER' | translate}}</h6>
+						<h5 class="f-size-16">{{convenio.reviewer?.name}}</h5>
 					</div>
-<!-- 					<div class="col-12 col-lg-4 p-2">
+ 					<!--<div class="col-12 col-lg-4 p-2">
 						<h6 class="font-poppins f-size-14 text-secondary">{{'AGREEMENTS.MANAGER' | translate}}</h6>
 						<h5 class="f-size-16">{{convenio.manager?.name}}</h5>
 					</div> -->

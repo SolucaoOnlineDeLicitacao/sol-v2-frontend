@@ -793,7 +793,7 @@
     "NAME_GROUP": "Nome do grupo",
     "TOTAL_COST": "Total de itens",
     "QUANTITY_TOTAL": "Quantidade disponivel/Total",
-    "COST": "Custo estimado",
+    "COST": "Custo unitário",
     "ITEM_GROUP_COST": "Itens do grupo",
     "PRICE": "Preço estimado (R$)",
     "ADD": "+ Adicionar",

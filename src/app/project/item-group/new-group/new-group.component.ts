@@ -97,7 +97,7 @@ export class NewGroupComponent implements OnInit, OnDestroy {
       return;
     }
     const item = {
-      costItems: costItems,
+      items: costItems,
       quantity: this.form.controls["quantity"].value,
       unit: this.form.controls["unit"].value,
       unitValue: this.form.controls["price"].value,
@@ -133,7 +133,7 @@ export class NewGroupComponent implements OnInit, OnDestroy {
           quantity: item.quantity,
           unit: item.unit, 
           unitValue: item.unitValue, 
-          costItems: item.costItems._id as string 
+          items: item.items._id as string 
         };
       }),
     };
@@ -165,5 +165,5 @@ export class NewGroupComponent implements OnInit, OnDestroy {
 interface ItemCustom {
   quantity: number;
   unitValue: number;
-  costItems: CostItemsResponseDto;
+  items: CostItemsResponseDto;
 }

@@ -119,7 +119,7 @@ export class AssociacaoLicitacaoDataComponent {
             return {
               quantity: actualQuantity,
               unitValue: item.unitValue,
-              costItems: item.costItems,
+              items: item.items,
             };
           });
           const updatedWorkPlan: WorkPlanRegisterRequest = {
@@ -215,7 +215,7 @@ export class AssociacaoLicitacaoDataComponent {
             return {
               quantity: actualQuantity,
               unitValue: item.unitValue,
-              costItems: item.costItems,
+              items: item.items,
             };
           });
           const updatedWorkPlan: WorkPlanRegisterRequest = {

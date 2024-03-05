@@ -79,7 +79,7 @@ export class EditGroupComponent implements OnInit {
       return;
     }
     const item: ItemCustom = {
-      costItems: costItems,
+      items: costItems,
       quantity: this.form.controls["quantity"].value,
       unitValue: this.form.controls["price"].value,
     };
@@ -98,7 +98,7 @@ export class EditGroupComponent implements OnInit {
     this.request = {
       name: this.form.controls['name'].value,
       product: this.itemList.map(item => {
-        return { quantity: item.quantity, unitValue: item.unitValue, costItems: item.costItems._id as string };
+        return { quantity: item.quantity, unitValue: item.unitValue, items: item.items._id as string };
       }),
     }
 
@@ -122,5 +122,5 @@ export class EditGroupComponent implements OnInit {
 interface ItemCustom {
   quantity: number;
   unitValue: number;
-  costItems: CostItemsResponseDto;
+  items: CostItemsResponseDto;
 }

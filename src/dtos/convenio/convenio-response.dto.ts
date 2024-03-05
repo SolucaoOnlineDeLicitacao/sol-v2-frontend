@@ -26,11 +26,11 @@ export abstract class ConvenioResponseDto {
 export interface WorkPlanInterface {
   _id: string;
   name: string;
-  product: Array<{ quantity: number; unit: string; unitValue: number; costItems: CostItemsResponseDto; _id: string }>;
+  product: Array<{ quantity: number; unit: string; unitValue: number; items: CostItemsResponseDto; _id: string }>;
 }
 
 export interface WorkPlanDto {
   _id: string;
   name: string;
-  product: Array<{ quantity: number; unit: string; unitValue: number; costItems: string; _id: string }>;
+  product: Array<{ quantity: number; unit: string; unitValue: number; items: string; _id: string }>;
 }

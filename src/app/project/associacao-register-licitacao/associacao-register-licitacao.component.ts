@@ -1010,7 +1010,7 @@ export class AssociacaoRegisterLicitacaoComponent {
     for (let i = 0; i < this.workPlanId.length; i++) {
       for (let x = 0; x < this.workPlanId[i].product.length; x++) {
         const item = this.workPlanId[i].product[x];
-        if (item.costItems === this.itemIdOfLote) {
+        if (item.items === this.itemIdOfLote) {
           let countQuantity = item.quantity - Number(this.formAddLots.controls["quantity"].value)
 
           this.workPlanId[i].product[x].quantity = countQuantity;
@@ -1021,7 +1021,7 @@ export class AssociacaoRegisterLicitacaoComponent {
               quantity: countQuantity,
               unit: item.unit,             
               unitValue: item.unitValue,
-              costItems: item.costItems
+              items: item.items
             }]
           }
 
@@ -1168,7 +1168,7 @@ export class AssociacaoRegisterLicitacaoComponent {
 
     let convenioIndex = this.convenioList.findIndex((el: any) => el._id == this.formModel.controls['insurance'].value);
     for (const workPlan of this.convenioList[convenioIndex].workPlan) {
-      const categorys = workPlan.product.map((a: any) => a.costItems?.category?.category_name);
+      const categorys = workPlan.product.map((a: any) => a.items?.category?.category_name);
       for (const category of categorys) {
         if (!this.classification.includes(category)) {
           this.classification.push(category);
@@ -1203,7 +1203,7 @@ export class AssociacaoRegisterLicitacaoComponent {
       for (let i = 0; i < this.workPlanId.length; i++) {
         for (let x = 0; x < this.workPlanId[i].product.length; x++) {          
           const item = this.workPlanId[i].product[x];        
-          if (item.costItems === _id) {                    
+          if (item.items === _id) {                    
             array.push(this.costItemsListFilter[t])
             this.lotItemsList.push({              
               "name": this.costItemsListFilter[t].name,

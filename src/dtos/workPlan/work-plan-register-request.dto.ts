@@ -1,11 +1,11 @@
 export abstract class WorkPlanRegisterRequest {
   name?: string;
-  product?: Array<{ quantity?: number; unit?: string; unitValue?: number; costItems?: string }>;
+  product?: Array<{ quantity?: number; unit?: string; unitValue?: number; items?: string }>;
 }
 
 export interface WorkPlanProductInterface {
   quantity?: number;
   unitValue?: number;
-  costItems?: string;
+  items?: string;
   unit?: string;
 }

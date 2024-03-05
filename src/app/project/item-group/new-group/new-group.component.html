@@ -6,7 +6,7 @@
         </div>
     </div>
     <form [formGroup]="form" class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="row mt-4">
                 <div class="col-md-12">
                     <h3>{{'WORKPLAN.NAME' | translate}}</h3>
@@ -25,46 +25,41 @@
                 </div>
 
                 <!-- Item -->
-                <div class="prop">
-                    <div class="w100 col-md-4">
-                        <label class=text-dark for="nome">{{'WORKPLAN.ITEMS_SUBTITLE' | translate}}:</label>
-                        <select formControlName="items" class="form-control br-10 h50" [(ngModel)]="selectedItem">
-                            <option value="1" disabled selected>{{"BUTTON_TEXT.SELECT" | translate}}</option>
-                            <option *ngFor="let item of costItemsList" [value]="item._id">{{item.code+' '+item.name}}</option>
-                        </select>
-                    </div>
+                <div class="w100 col-md-3">
+                    <label class="text-dark mt-2" for="nome">{{'WORKPLAN.ITEMS_SUBTITLE' | translate}}:</label>
+                    <select formControlName="items" class="form-control br-10 h50" [(ngModel)]="selectedItem">
+                        <option value="1" disabled selected>{{"BUTTON_TEXT.SELECT" | translate}}</option>
+                        <option *ngFor="let item of costItemsList" [value]="item._id">{{item.code+' '+item.name}}
+                        </option>
+                    </select>
                 </div>
 
                 <!-- Cantidad -->
-                <div class="prop">
-                    <div class="w100 col-md-2">
-                        <label class=text-dark for="nome">{{'ADMINISTRATION_AGREEMENTS_BIDDING.QUANTITY' |
-                            translate}}</label>
-                        <input type="text" formControlName="quantity" [maxlength]="10" mask="0*"
-                            class="w100 py-4 br-10 form-control text-dark h50 " placeholder="{{'WORKPLAN.PLACEHOLDER_QUANTITY' | translate}}">
-                    </div>
+                <div class="w100 col-md-2">
+                    <label class="text-dark mt-2" for="nome">{{'ADMINISTRATION_AGREEMENTS_BIDDING.QUANTITY' |
+                        translate}}</label>
+                    <input type="text" formControlName="quantity" [maxlength]="10" mask="0*"
+                        class="w100 py-4 br-10 form-control text-dark h50 "
+                        placeholder="{{'WORKPLAN.PLACEHOLDER_QUANTITY' | translate}}">
                 </div>
 
-                <!-- Unit List -->                  
-                <div class="prop">
-                    <div class="w100 col-md-4">
-                        <label class=text-dark>{{'WORKPLAN.UNIT_LIST_SUBTITLE' | translate}}:</label>
-                        <select class="form-control br-10 h50" formControlName="unit" [(ngModel)]="selectedUnit">
-                            <option value="1" disabled selected>{{"BUTTON_TEXT.SELECT" | translate}}</option>
-                            <option *ngFor="let item of unitList" [value]="item">{{item}}</option>
-                        </select>
-                    </div>
+                <!-- Unit List -->
+                <div class="w100 col-md-4">
+                    <label class="text-dark mt-2">{{'WORKPLAN.UNIT_LIST_SUBTITLE' | translate}}:</label>
+                    <select class="form-control br-10 h50" formControlName="unit" [(ngModel)]="selectedUnit">
+                        <option value="1" disabled selected>{{"BUTTON_TEXT.SELECT" | translate}}</option>
+                        <option *ngFor="let item of unitList" [value]="item">{{item}}</option>
+                    </select>
                 </div>
-                   
-                
+
+
 
                 <!-- Price -->
-                <div class="prop">
-                    <div class="w100 col-md-3">
-                        <label class=text-dark for="nome">{{'GROUP_ITEMS.PRICE' | translate}}:</label>
-                        <input type="text" formControlName="price" class="w100 py-4 br-10 form-control text-dark h50 " mask="separator.2" thousandSeparator="."
-                            placeholder="{{'WORKPLAN.PLACEHOLDER_PRICE' | translate}}">
-                    </div>
+                <div class="w100 col-md-3">
+                    <label class="text-dark mt-2" for="nome">{{'GROUP_ITEMS.PRICE' | translate}}:</label>
+                    <input type="text" formControlName="price" class="w100 py-4 br-10 form-control text-dark h50 "
+                        mask="separator.2" thousandSeparator="."
+                        placeholder="{{'WORKPLAN.PLACEHOLDER_PRICE' | translate}}">
                 </div>
 
                 <div class="d-flex align-self-end w100 mt-2 col-md-3">
@@ -80,9 +75,12 @@
                     <table class="table table-borderless">
                         <thead>
                             <tr style="border-bottom: none !important; border-top: none !important">
-                                <th class="br-tabele bg-pattern text-light" scope="col">{{'COST_ITEMS.COST_ITEMS' | translate}}</th>
-                                <th class="bg-pattern text-light" scope="col">{{'GROUP_ITEMS.QUANTITY_TOTAL' | translate}}</th>
-                                <th class="bg-pattern text-light" scope="col">{{'GROUP_ITEMS.UNIT_TITLE' | translate}}</th>
+                                <th class="br-tabele bg-pattern text-light" scope="col">{{'COST_ITEMS.COST_ITEMS' |
+                                    translate}}</th>
+                                <th class="bg-pattern text-light" scope="col">{{'GROUP_ITEMS.QUANTITY_TOTAL' |
+                                    translate}}</th>
+                                <th class="bg-pattern text-light" scope="col">{{'GROUP_ITEMS.UNIT_TITLE' | translate}}
+                                </th>
                                 <th class="bg-pattern text-light" scope="col">{{'GROUP_ITEMS.COST' | translate}}</th>
                                 <th class=" bg-pattern text-light" scope="col"></th>
                             </tr>
@@ -91,7 +89,7 @@
                             <tr style="border-bottom: none !important; border-top: none !important"
                                 *ngFor="let item of itemList">
                                 <td style="border-radius: 10px 0px 0px 10px" class="border  border-right-0">
-                                    {{item.costItems.name}}</td>
+                                    {{item.items.name}}</td>
                                 <td class=" border-top text-dark border-bottom">{{item.quantity}}</td>
                                 <td class=" border-top text-dark border-bottom">{{item.unit}}</td>
                                 <td class=" border-top  text-dark border-bottom">{{item.unitValue | currency: 'BRL'}}
@@ -105,8 +103,7 @@
                     </table>
                 </div>
             </div>
-            <div *ngIf="!itemList.length && isSubmit"
-                class="div-msg-error mt-2">
+            <div *ngIf="!itemList.length && isSubmit" class="div-msg-error mt-2">
                 <img src="../../../assets/images/icon-alert.svg" class="img-msg-error" alt>
                 <p class="font-poppins font-size-14 m-0">{{'GROUP_ITEMS.ALL_REQUEST' | translate}}</p>
             </div>

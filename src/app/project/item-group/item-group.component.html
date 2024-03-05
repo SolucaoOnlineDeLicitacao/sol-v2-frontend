@@ -30,9 +30,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of response.product">
-              <td (click)="dataItem(item.costItems._id)" class="text-capitalize" scope="row">{{item.costItems?.name || '-'}}</td>
-              <td (click)="dataItem(item.costItems._id)"class="text-capitalize">{{item.quantity}}</td>
-              <td (click)="dataItem(item.costItems._id)"class="text-capitalize">{{item.unitValue | currency: 'BRL'}}</td>
+              <td (click)="dataItem(item.items._id)" class="text-capitalize" scope="row">{{item.items?.name || '-'}}</td>
+              <td (click)="dataItem(item.items._id)"class="text-capitalize">{{item.quantity}}</td>
+              <td (click)="dataItem(item.items._id)"class="text-capitalize">{{item.unitValue | currency: 'BRL'}}</td>
             </tr>
           </tbody>
         </table>
