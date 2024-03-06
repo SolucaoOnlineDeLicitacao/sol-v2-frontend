@@ -104,6 +104,58 @@ export class EditContractTemplatesComponent {
 
   }
 
+  deleteContact() {
+    this.ngxSpinnerService.show();
+    this._modelContractService.delete(this.modelContractId).subscribe({
+      next: (data) => {
+
+        let successMessage = 'Documento deletada com sucesso!';
+
+        switch(this.storedLanguage) {
+          case 'pt': 
+            successMessage = 'Documento deletada com sucesso!'
+            break;
+          case 'en':
+            successMessage = 'Document deleted successfully!'
+            break;
+          case 'fr':
+            successMessage = 'Document supprimée avec succès!'
+            break;
+          case 'es':
+            successMessage = 'Documento eliminada con éxito!'
+            break;
+        }
+
+        this.ngxSpinnerService.hide();
+        this.toastrService.success(successMessage, '', { progressBar: true });
+        this.backContact();
+       
+      },
+      error: (error) => {
+
+        let errorMessage = 'Erro ao deletar categoria!';
+
+        switch(this.storedLanguage) {
+          case 'pt': 
+            errorMessage = 'Erro ao deletar documento!'
+            break;
+          case 'en':
+            errorMessage = 'Error deleting document!'
+            break;
+          case 'fr':
+            errorMessage = 'Erreur lors de la suppression de la document!'
+            break;
+          case 'es':
+            errorMessage = 'Error al eliminar la documento!'
+            break;
+        }
+
+        this.ngxSpinnerService.hide();        
+        this.toastrService.error(errorMessage, '', { progressBar: true });
+      }
+    });
+  }
+
   onSubmit() {
 
     if(!this.form.value.classification || !this.form.value.language || !this.fileToUpload){

@@ -318,6 +318,7 @@
     "MAX_PASSWORD_CHARACTERS": "Le mot de passe doit comporter un maximum de 20 caractères !"
   },
   "BUTTON_TEXT": {
+    "DELETE": "Deletar",
     "CANCEL": "Annuler",
     "CONFIRM": "Confirmer",
     "RESEND_CODE": "Renvoyer le code",

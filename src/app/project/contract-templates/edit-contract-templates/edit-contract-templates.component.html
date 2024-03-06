@@ -9,7 +9,8 @@
         <form [formGroup]="form" class="row" (ngSubmit)="onSubmit()">
             <div class="col-md-4 mt-2">
                 <label class="text-dark" for="name"><strong>{{'AGREEMENTS.NAME' | translate}}</strong></label>
-                <input type="text" class="form-control br-10 py-4" formControlName="name" id="name" placeholder="{{'AGREEMENTS.NAME' | translate}}">
+                <input type="text" class="form-control br-10 py-4" formControlName="name" id="name"
+                    placeholder="{{'AGREEMENTS.NAME' | translate}}">
             </div>
             <div class="col-md-4 mt-2">
                 <label for="classification" class="text-dark text-capitalize"><b>{{"CREATE_BIDDING.CLASSIFICATION"
@@ -61,13 +62,19 @@
                     <input type="file" class="file-upload" (change)="onFileSelected($event)" accept=".docx">
                 </div>
                 <div class="row d-flex justify-content-end">
-                    <div class="col-md-4 mt-4 ">
+                    <div class="col-md-3 mt-4">
+                        <button (click)="deleteContact()" type="button"
+                            class="btn btn-danger text-light br-10 w-100 h50">
+                            <strong>{{'BUTTON_TEXT.DELETE' | translate}}</strong>
+                        </button>
+                    </div>
+                    <div class="col-md-3 mt-4 ">
                         <button (click)="backContact()" type="button"
                             class="btn btn-light br-10 w-100 color-patter h50">
                             <strong>{{'BUTTON_TEXT.CANCEL' | translate}}</strong>
                         </button>
                     </div>
-                    <div class="col-md-4 mt-4 ">
+                    <div class="col-md-3 mt-4 ">
                         <button type="submit" class="btn bg-pattern text-light br-10 w-100 h50">
                             <strong>{{'BUTTON_TEXT.SAVE' | translate}}</strong>
                         </button>
@@ -104,7 +111,8 @@
                         <h6>{{'{supplier_cnpj}'}} : {{ "CONTRACT_TEMPLATE.SUPPLIER_TAG.T2" | translate }}</h6>
                         <h6>{{'{supplier_country}'}} : {{ "CONTRACT_TEMPLATE.SUPPLIER_TAG.T3" | translate }}</h6>
                         <h6>{{'{adress_supplier}'}} : {{ "CONTRACT_TEMPLATE.SUPPLIER_TAG.T4" | translate }}</h6>
-                        <h6>{{'{name_legal_representative_supplier}'}} : {{ "CONTRACT_TEMPLATE.SUPPLIER_TAG.T5" | translate }}</h6>
+                        <h6>{{'{name_legal_representative_supplier}'}} : {{ "CONTRACT_TEMPLATE.SUPPLIER_TAG.T5" |
+                            translate }}</h6>
                         <h6>{{'{supplier_email}'}} : {{ "CONTRACT_TEMPLATE.SUPPLIER_TAG.T6" | translate }}</h6>
                         <h6>{{'{signature_supplier}'}} : {{ "CONTRACT_TEMPLATE.SUPPLIER_TAG.T7" | translate }}</h6>
                         <h6>{{'{guest_suppliers}'}} : {{ "CONTRACT_TEMPLATE.SUPPLIER_TAG.T8" | translate }}</h6>
@@ -131,7 +139,8 @@
                         <h6>{{'{purchaser_country}'}} : {{ "CONTRACT_TEMPLATE.ASSOCIATION_TAG.T2" | translate }}</h6>
                         <h6>{{'{email_purchaser}'}} : {{ "CONTRACT_TEMPLATE.ASSOCIATION_TAG.T3" | translate }}</h6>
                         <h6>{{'{adress_purchaser}'}} : {{ "CONTRACT_TEMPLATE.ASSOCIATION_TAG.T4" | translate }}</h6>
-                        <h6>{{'{name_legal_representative_purchaser}'}} : {{ "CONTRACT_TEMPLATE.ASSOCIATION_TAG.T5" | translate }}</h6>
+                        <h6>{{'{name_legal_representative_purchaser}'}} : {{ "CONTRACT_TEMPLATE.ASSOCIATION_TAG.T5" |
+                            translate }}</h6>
                         <h6>{{'{purchaser_cnpj}'}} : {{ "CONTRACT_TEMPLATE.ASSOCIATION_TAG.T6" | translate }}</h6>
                         <h6>{{'{signature_purchaser}'}} : {{ "CONTRACT_TEMPLATE.ASSOCIATION_TAG.T7" | translate }}</h6>
                     </div>
@@ -168,7 +177,8 @@
                 <h6>{{ "CONTRACT_TEMPLATE.LOTE_TAG.TITLE" | translate }}</h6>
             </div>
             <div class="col-md-1 p-0 d-flex justify-content-end">
-                <i class="bi" [ngClass]="{'bi-caret-down-fill': !isSectionOpenLote, 'bi-caret-up': isSectionOpenLote}"></i>
+                <i class="bi"
+                    [ngClass]="{'bi-caret-down-fill': !isSectionOpenLote, 'bi-caret-up': isSectionOpenLote}"></i>
             </div>
         </div>
         <div class="content pb-3" [ngClass]="{ 'open': isSectionOpenLote }">
