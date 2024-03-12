@@ -34,7 +34,7 @@ export class NewCategoriasComponent implements OnInit {
     private translate: TranslateService,
   ) {
     this.form = this.formBuilder.group({
-      category: ['', [Validators.required, Validators.maxLength(50)]],
+      category: ['', [Validators.required]],
       segment: ['', [Validators.required]],
       code: ['', [Validators.required]],
     });

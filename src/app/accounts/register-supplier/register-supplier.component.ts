@@ -66,7 +66,7 @@ export class RegisterSupplierComponent implements OnInit {
 
   ) {
     this.form = this.formBuilder.group({
-      name: ["", [Validators.required, Validators.maxLength(50)]],
+      name: ["", [Validators.required]],
       nationality: [""],
       maritalStatus: [""],
       mainCnpj: ["", [Validators.minLength(14)]],

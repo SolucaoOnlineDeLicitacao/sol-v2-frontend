@@ -34,7 +34,7 @@ export class EditClassComponent implements OnInit {
     private translate: TranslateService,
   ) {
     this.form = this.formBuilder.group({
-      group: ['', [Validators.required, Validators.maxLength(50)]],
+      group: ['', [Validators.required]],
       description: ['', [Validators.required]]      
     });
   }

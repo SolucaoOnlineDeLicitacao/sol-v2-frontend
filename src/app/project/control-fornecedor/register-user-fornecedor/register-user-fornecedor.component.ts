@@ -32,7 +32,7 @@ export class RegisterUserFornecedorComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       type: ['fornecedor', [Validators.required]],
       supplier: [null, [Validators.required]],

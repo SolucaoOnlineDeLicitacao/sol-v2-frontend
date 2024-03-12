@@ -40,7 +40,7 @@ export class RegisterUserAssociacaoComponent implements OnInit {
     private associationService: AssociationService
   ) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       type: ['associacao', [Validators.required]],
       office: [ '', [Validators.required]],

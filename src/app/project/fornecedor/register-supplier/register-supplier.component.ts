@@ -50,7 +50,7 @@ export class RegisterSupplierComponent implements OnInit {
     private categoryService: CategoryService
   ) {
     this.form = this.formBuilder.group({
-      name: ["", [Validators.required, Validators.maxLength(50)]],
+      name: ["", [Validators.required]],
       mainCnpj: ["", [Validators.minLength(14)]],
       mainCpf: ["", [Validators.minLength(11)]],
       type: ["", [Validators.required]],

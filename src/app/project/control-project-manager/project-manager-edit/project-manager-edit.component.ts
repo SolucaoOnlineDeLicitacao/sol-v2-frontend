@@ -31,7 +31,7 @@ export class ProjectManagerEditComponent {
     private activatedRoute: ActivatedRoute,
   ) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       type: ['project_manager', [Validators.required]],
       phone: ['', [Validators.required, Validators.minLength(10)]],

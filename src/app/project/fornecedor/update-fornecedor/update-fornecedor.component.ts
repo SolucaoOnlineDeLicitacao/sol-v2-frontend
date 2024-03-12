@@ -47,7 +47,7 @@ export class UpdateFornecedorComponent {
     private nominatimService: NominatimService
   ) {
     this.form = this.formBuilder.group({
-      name: ["", [Validators.required, Validators.maxLength(50)]],
+      name: ["", [Validators.required]],
       cnpj: ["", [Validators.minLength(14)]],
       cpf: ["", [Validators.minLength(11)]],
     });

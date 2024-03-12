@@ -26,7 +26,7 @@ export class EditCategoriasComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.formBuilder.group({
-      category: ['', [Validators.required, Validators.maxLength(50)]],
+      category: ['', [Validators.required]],
       segment: ['', [Validators.required]],
       code: ['', [Validators.required]],
     });

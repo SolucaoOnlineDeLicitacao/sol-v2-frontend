@@ -41,6 +41,6 @@ export class ItemGroupComponent {
 
   dataItem(i: string) {
     localStorage.setItem("editcostitems", JSON.stringify(i));
-    this.router.navigate([`pages/itens-custo/dados-item/${i}`]);
+    this.router.navigate([`pages/item-group/edit-group/${localStorage.getItem("id-item-group")}`]);
   }
 }

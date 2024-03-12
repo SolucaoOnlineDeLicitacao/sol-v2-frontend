@@ -39,7 +39,7 @@ export class UpdateAssociationComponent implements OnInit {
     private nominatimService: NominatimService
   ) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
+      name: ['', [Validators.required]],
       cnpj: ['', [Validators.required, Validators.minLength(14)]],
     });
 

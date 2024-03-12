@@ -41,7 +41,7 @@ export class NewGroupComponent implements OnInit, OnDestroy {
     private convenioService: ConvenioService
   ) {
     this.form = this.formBuilder.group({
-      name: ["", [Validators.required, Validators.maxLength(50)]],
+      name: ["", [Validators.required]],
       items: ["", [Validators.required]],
       unit: ["", [Validators.required]],
       price: ["", [Validators.required]],

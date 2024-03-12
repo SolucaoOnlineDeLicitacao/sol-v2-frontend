@@ -10,6 +10,7 @@ import { WorkPlanRegisterRequest } from 'src/dtos/workPlan/work-plan-register-re
 import { WorkPlanService } from 'src/services/work-plan.service';
 import { WorkPlanInterface } from 'src/dtos/convenio/convenio-response.dto';
 import { TranslateService } from '@ngx-translate/core';
+import { ItemsService } from 'src/services/items.service';
 @Component({
   selector: 'app-edit-group',
   templateUrl: './edit-group.component.html',
@@ -25,6 +26,7 @@ export class EditGroupComponent implements OnInit {
 
   constructor(
     private costItemsService: CostItemsService,
+    private itemsService: ItemsService,
     private workPlanService: WorkPlanService,
     public localStorage: LocalStorageService,
     private formBuilder: FormBuilder,
@@ -36,7 +38,7 @@ export class EditGroupComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
+      name: ['', [Validators.required]],
       items: ['', [Validators.required]],
       price: ['', [Validators.required]],
       quantity: ['', [Validators.required]],
@@ -55,7 +57,7 @@ export class EditGroupComponent implements OnInit {
 
 
   getCostItems() {
-    this.costItemsService.list().subscribe({
+    this.itemsService.getItems().subscribe({
       next: (success) => {
         this.costItemsList = success;
       },

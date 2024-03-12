@@ -33,7 +33,7 @@ export class NewProdutoComponent implements OnInit {
     private router: Router
   ) {
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(50)]],
+      name: ['', [Validators.required]],
       pdm: ['', [Validators.required]],
     });
   }
