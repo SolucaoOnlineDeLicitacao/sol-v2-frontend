@@ -66,15 +66,15 @@
                     <div class="col-md-10 mt-2 ">
                         <h6 class="font-poppins f-size-14 text-secondary">{{'ADMINISTRATION_BIDDING.ASSOCIATION' |
                             translate}}</h6>
-                        <h5 class="f-size-16">{{item.association?.name}}</h5>
+                        <h5 class="f-size-16">{{item.association?.association?.name}}</h5>
                     </div>
-                    <!--
-                    <div *ngIf="item.proofreader" class="col-md-2 mt-2 text-capitalize">
+                    
+                    <div *ngIf="item.reviewer" class="col-md-2 mt-2 text-capitalize">
                         <h6 class="font-poppins f-size-14 text-secondary">{{'ADMINISTRATION_BIDDING.REVIWER' | translate}}
                         </h6>
-                        <h5 class="f-size-16">{{item.proofreader?.name}}</h5>
+                        <h5 class="f-size-16">{{item.reviewer?.name}}</h5>
                     </div>
-                    -->
+                   
 
                     <div class="col-md-4 mt-2 ">
                         <h6 class="font-poppins f-size-14 text-secondary">{{'ADMINISTRATION_BIDDING.MODALITY' | translate}}

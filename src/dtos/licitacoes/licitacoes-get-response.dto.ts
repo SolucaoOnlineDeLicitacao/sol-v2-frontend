@@ -9,4 +9,5 @@ export abstract class LicitacoesGetResponseDto {
     status: string;
     association?: any;
     createdAt: Date;    
+    reviewer?: any;    
 }
