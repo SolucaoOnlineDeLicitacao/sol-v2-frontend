@@ -6,6 +6,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/services/auth.service';
 import { UserService } from 'src/services/user.service';
+interface Role {
+  value: string;
+  name: { [key: string]: string };
+}
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +19,53 @@ import { UserService } from 'src/services/user.service';
 
 export class ProfileComponent {
   changePassword!: FormGroup;
-
+  roleList: Role[] = [
+    {
+      value: 'visualizador_projetos',
+      name: {
+        'en': 'Project Viewer',
+        'pt': 'Visualizador de projetos',
+        'fr': 'Visualiseur de projets',
+        'es': 'Visualizador de proyectos'
+      }
+    },
+    {
+      value: 'revisor_projetos',
+      name: {
+        'en': 'Project Reviewer',
+        'pt': 'Revisor de projetos',
+        'fr': 'Relecteur de projets',
+        'es': 'Revisor de proyectos'
+      }
+    },
+    {
+      value: 'revisor',
+      name: {
+        'en': 'Bid/convention reviewer',
+        'pt': 'Revisor de licitação/convênio',
+        'fr': "Réviseur d'appels d'offres / convention",
+        'es': 'Revisor de licitación/convenio'
+      }
+    },
+    {
+      value: 'gerente_geral_projetos',
+      name: {
+        'en': 'General Project Manager',
+        'pt': 'Gestor de projetos geral',
+        'fr': 'Chef de projet général',
+        'es': 'Gerente de proyectos general'
+      }
+    },
+    {
+      value: 'geral',
+      name: {
+        'en': 'Administrador',
+        'pt': 'Administrador',
+        'fr': 'Administrador',
+        'es': 'Administrador'
+      }
+    },
+  ];
   constructor(
     public authService: AuthService,
     private modalService: NgbModal,
@@ -50,6 +100,17 @@ export class ProfileComponent {
   }
 
   ngOnInit(): void {
+  }
+
+  getNameOfRole(value: string): string | null {
+    // Determina o idioma com base em this.storedLanguage ou usa 'en' (Inglês) como padrão
+    const language = localStorage.getItem('selectedLanguage') || 'pt';
+
+    const role = this.roleList.find(role => role.value === value);
+    if (role && role.name[language]) {
+      return role.name[language];
+    }
+    return null;
   }
 
   open(content: any) {

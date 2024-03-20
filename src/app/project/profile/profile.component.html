@@ -8,7 +8,7 @@
 
 	<div class="row mt-3">
 		<div class="col-12">
-			<div class="col-lg-6 col-sm-10">
+			<div class="col-lg-12 col-sm-12">
 				<div class="row p-3 user-data-border">
 
 					<div class="col-12 col-lg-12 p-2 text-capitalize">
@@ -18,6 +18,10 @@
 					<div class="col-12 col-lg-12 p-2">
 						<h6 class="font-poppins f-size-14 text-secondary">Email</h6>
 						<h5 class="f-size-16">{{authService.getAuthenticatedUser().email}}</h5>
+					</div>
+					<div class="col-12 col-lg-12 p-2">
+						<h6 class="font-poppins f-size-14 text-secondary">Tipo de usuário</h6>
+						<h5 class="f-size-16">{{getNameOfRole(authService.getAuthenticatedUser().roles)}}</h5>
 					</div>
 
 					<div class="col-md-8 mt-4">
