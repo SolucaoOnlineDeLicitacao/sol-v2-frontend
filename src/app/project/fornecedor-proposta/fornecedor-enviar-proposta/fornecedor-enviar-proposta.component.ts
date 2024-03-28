@@ -172,10 +172,6 @@ export class FornecedorEnviarPropostaComponent {
 
   }
 
-  submitTeste() {
-
-  }
-
   getTotalValueProposal(allotmentId: string) {
     const allotmentArr = this.response.add_allotment.find((a: any) => a._id === allotmentId);
 
@@ -236,6 +232,7 @@ export class FornecedorEnviarPropostaComponent {
               iterator = Object.assign(iterator, { disabledBtn: true })
             }
           }
+          this.location.back();
         },
         error: error => {
           this.toastrService.error(this.translate.instant('TOASTRS.ERROR_PROPOSAL'), '', { progressBar: true });

@@ -7,7 +7,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-12">
       <div class="col-md-12 border br-10 py-3 px-4 ">
         <div class="row" *ngFor="let item of response.allotment">
           <div class="col-md-12 my-2">
@@ -20,7 +20,8 @@
                 <h5 class="f-size-16">{{item.lote}}</h5>
               </div>
               <div class="col-md-4 mt-3 ">
-                <h6 class="font-poppins f-size-14 text-secondary">{{"SUPPLIER_BIDDING.DELIVERY_DEADLINE" | translate}}</h6>
+                <h6 class="font-poppins f-size-14 text-secondary">{{"SUPPLIER_BIDDING.DELIVERY_DEADLINE" | translate}}
+                </h6>
                 <h5 class="f-size-16">{{item.days_to_delivery}}</h5>
               </div>
               <div class="col-md-4 mt-3 ">
@@ -50,29 +51,31 @@
             </table>
           </div>
         </div>
-        <form [formGroup]="form" class="col-md-12 d-flex justify-content-end">
-          <div class="col mt-1" *ngIf="form.value.valueUnity">
-            <h6 class="font-poppins f-size-14 text-secondary">{{"ASSOCIATION_AGREEMENTS.TOTAL_VALUE" | translate}}</h6>
-            <span class="text-primary f-size-16">{{form.value.valueUnity * quantity | currency: 'BRL' }}</span>
-          </div>
-          <div class="col-md-3">
-            <h6 class="font-poppins f-size-14 text-secondary">{{"SUPPLIER_BIDDING.PRICE_PER_UNIT" | translate}}</h6>
-            <input type="tel" #fretealarm formControlName="valueUnity" class="form-control br-10 py-4" id="valor" 
-            currencyMask
-            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" >
-          </div>
-          <!-- <input type="tel" #fretealarm [formControlName]="'frete-' + item._id"
+        <form [formGroup]="form" class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              <h6 class="font-poppins f-size-14 text-secondary">{{"SUPPLIER_BIDDING.PRICE_PER_UNIT" | translate}}</h6>
+              <input type="tel" #fretealarm formControlName="valueUnity" class="form-control br-10 py-4" id="valor"
+                currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+            </div>
+            <!-- <input type="tel" #fretealarm [formControlName]="'frete-' + item._id"
                                         class="form-control br-10 py-4" id="valor" currencyMask
                                         [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"> -->
-          <div class="col-md-3">
-            <h6 class="font-poppins f-size-14 text-secondary">{{"ASSOCIATION_CONTRACTS.SHIPPING_COST" | translate}}</h6>
-            <input type="tel" #fretealarm formControlName="frete" class="form-control br-10 py-4" id="valor" 
-            currencyMask
-            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
-          </div>
-          <div class="col-md-4 d-flex align-self-end">
-            <button class="btn bg-pattern text-light w-100 h50 br-10" type="button"
-              (click)="backProposal()"><strong>{{"SUPPLIER_BIDDING.UPDATE_PROPOSAL" | translate}}</strong></button>
+            <div class="col-md-6">
+              <h6 class="font-poppins f-size-14 text-secondary">{{"ASSOCIATION_CONTRACTS.SHIPPING_COST" | translate}}
+              </h6>
+              <input type="tel" #fretealarm formControlName="frete" class="form-control br-10 py-4" id="valor"
+                currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+            </div>
+            <div class="col-md-6 mt-3" *ngIf="form.value.valueUnity">
+              <h6 class="font-poppins f-size-14 text-secondary">{{"ASSOCIATION_AGREEMENTS.TOTAL_VALUE" | translate}}
+              </h6>
+              <span class="text-primary f-size-16">{{form.value.valueUnity * quantity | currency: 'BRL' }}</span>
+            </div>
+            <div class="col-md-6 mt-3 d-flex align-self-end">
+              <button class="btn bg-pattern text-light w-100 h50 br-10" type="button"
+                (click)="backProposal()"><strong>{{"SUPPLIER_BIDDING.UPDATE_PROPOSAL" | translate}}</strong></button>
+            </div>
           </div>
         </form>
       </div>

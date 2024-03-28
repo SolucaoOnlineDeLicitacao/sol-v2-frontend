@@ -12,6 +12,8 @@ import html2canvas from "html2canvas";
 import { LanguageContractEnum } from "src/enums/language-contract.enum";
 import { ModelContractClassificationEnum } from "src/enums/modelContract-classification.enum";
 import { NgxSpinnerService } from "ngx-spinner";
+import { UserService } from "src/services/user.service";
+import { firstValueFrom } from "rxjs";
 
 @Component({
   selector: "app-fornecedor-detalhe-licitacao",
@@ -37,6 +39,7 @@ export class FornecedorDetalheLicitacaoComponent {
     private route: ActivatedRoute,
     private translate: TranslateService,
     private bidService: AssociationBidService,
+    private userService: UserService,
     private ngxSpinnerService: NgxSpinnerService,
     private proposalService: ProposalService,
   ) {}
@@ -304,9 +307,11 @@ export class FornecedorDetalheLicitacaoComponent {
     }
   }
 
-  updateProposal(id: string) {
+  async updateProposal(id: string) {
+    const userActual = await firstValueFrom(this.userService.getAuthenticatedUser());
+    console.log(this.proposals)
     const proposal = this.proposals?.proposals?.find((proposal: any) => {
-      return proposal?.allotment?.some((allotment: any) => allotment._id === id);
+      return proposal?.proposedBy.supplier._id === userActual.supplier?._id && proposal?.allotment?.some((allotment: any) => allotment._id === id);
     });
     if (proposal) {
       this.router.navigate(["/pages/fornecedor/proposta/atualizar/" + proposal._id]);
