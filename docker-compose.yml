@@ -1,0 +1,25 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+    networks:
+      - sol-network
+
+  api:
+    build:
+      context: ./api
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/app
+    networks:
+      - sol-network
+
+networks:
+  sol-network:
+    driver: bridge

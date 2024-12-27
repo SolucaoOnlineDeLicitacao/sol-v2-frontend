@@ -25,8 +25,9 @@ COPY --from=builder /app/dist/sol-app-frontend /usr/share/nginx/html
 # Copiar configuração personalizada do Nginx (opcional)
 # COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expor a porta 80
-EXPOSE 80
+# Expor a porta 4200
+EXPOSE 4200
 
 # Comando para iniciar o Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
+# CMD ["nginx", "-g", "daemon off;"]
